@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;1,100;1,200;1,300;1,400&display=swap');
+
+
+.top-section{
+    background-image: url('bmw.jpeg');
+    min-height: 60%;
+    min-width: 100%;
+    padding: 0 0 0 0;
+    margin: 0 0 0 0;
+    margin: 0 auto;
+    /* position: fixed; */
+    background-repeat: no-repeat;
+    background-size: cover; 
+    border-radius: 0 0 10% 10%;
+    
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    background-color: #FFFFFF;
+    font-family: 'Montserrat';
+}
+
+.autobarter-logo{
+    width:10%;
+    height: 20%;
+}
+
+.index-h2{
+    text-align: center;
+    padding: 8% 0 4% 0;
+
+}
+
+.card-img-top {
+    flex-grow: 1;
+    object-fit:contain;
+}
+.card-body{
+    flex-grow:0;
+}
+
+.card-btn{
+   border-radius: 20px;
+   background-color: #0D67B5;
+   color: #FFFFFF;
+   padding: 3% 4% 3% 4%;
+   font-size: 80%;
+}
+
+div.card-text table tbody tr td {
+    font-size: 12px;
+}
+
+.divider{
+    width: 50%;
+    border-bottom: solid 1px  #f2f2f2;
+    margin: 0 auto;
+    margin-bottom: 100px;
+    margin-top: 50px;
+
+}
+.vm-btn{
+    border: solid 1px black;
+    background-color: #FFFFFF;
+    color: black;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+
+.column {
+    float: left;
+  }
+  
+  .left {
+    width: 20%;
+  }
+  
+  .right {
+    width: 80%;
+  }
+  /* Clear floats after the columns */
+.row-custom:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  .custom-input-rect{
+    background: #E5ECF7;
+    width: 50%;
+    padding: 3px;
+    border: none;
+    color: #505780;
+    border-radius: 6px;
+    font-size: small;
+    font-weight: 800;
+    text-align: center;
+    
+
+
+  }
+
+  .custom-input-rect::placeholder{
+    color: #505780;
+
+  }

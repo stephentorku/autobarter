@@ -1,0 +1,129 @@
+{% extends 'advertisements/navbar.html' %}
+
+{% block body %}
+
+
+
+
+<div>
+    <h1 class="index-h2" style="padding-top: 12%">Vendor Profile</h1>
+</div>
+
+
+
+<div style="padding: 5%; width: 70%; border: solid 1px #96A1AA; margin: 0 auto; border-radius: 8px">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+            {% load static %}
+            <img class="card-img-top" style="border-radius: 4%; width: 90%" src="{% static 'advertisements/user.png' %}" alt="user"> 
+
+            </div>
+            <div class="col-md-9">
+                <h3>Kwame Nkansah</h3><br>
+
+                <a style="background-color: #E4ECF7; color: #505780; padding: 0 7% 0 7%; border-radius: 10px; font-weight: 800; font-size: 19px"> &#128222; 022444245 </a>
+                &nbsp;
+                {% comment %} &#128222; 022444245 <br><br> {% endcomment %}
+                <a style="background-color: #E4ECF7; color: #505780; padding: 0 7% 0 7%; border-radius: 10px; font-weight: 800; font-size: 19px"> &#128172; Chat with Seller </a> <br>
+
+                {% comment %} &#128172; Chat with Seller {% endcomment %}
+                <br>
+
+                <h4>Rating: 4.5/5</h4>
+            </div>
+           
+
+        </div>
+    </div>
+</div>
+
+<h2 class="index-h2">All ads by Kwame Nkansah</h2>
+<div style="padding: 2%; width: 100%; margin: 0 auto; padding-left: 8%">
+    
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3" style="margin-right: 20px; margin-bottom: 20px">
+                <div class="card" style="width: 18rem; padding: 2%; border-radius: 4%;">
+                    {% load static %}
+                    <img class="card-img-top" style="border-radius: 4%;" src="{% static 'advertisements/civic.jpeg' %}" alt="Logo">
+                    
+                    <div class="card-body">
+                      <h5 class="card-title">Honda Civic 2020</h5>
+                      <div class="card-text" style="margin-bottom: 15%;">
+                          <table style="width: 100%;">
+                              <tbody>
+                                  <tr > <td style="height: 50px;">Market Value</td> <td style="text-align: right; font-weight: 900;"> <a style="background-color: #E4ECF7; color: #505780; padding: 0 7% 0 7%; border-radius: 10px;">GH¢ 180,000</a></td></tr>
+                                  <tr> <td>Selling Price</td> <td style="text-align: right; font-weight: 900;"> <a style="background-color: #E4ECF7; color: #505780; padding: 0 7% 0 7%; border-radius: 10px;">GH¢ 190,000</a></td></tr>
+                              </tbody>
+                          </table>
+                        </div>
+                      <a href="{% url 'details' %}" class="card-btn">More Details →</a>
+                    </div>
+                  </div>
+            </div>
+
+            <div class="col-md-3" style="margin-right: 20px; margin-bottom: 20px">
+                <div class="card" style="width: 18rem; padding: 2%; border-radius: 4%;">
+                    {% load static %}
+                    <img class="card-img-top" style="border-radius: 4%;" src="{% static 'advertisements/civic.jpeg' %}" alt="Logo">
+                    
+                    <div class="card-body">
+                      <h5 class="card-title">Honda Civic 2020</h5>
+                      <div class="card-text" style="margin-bottom: 15%;">
+                          <table style="width: 100%;">
+                              <tbody>
+                                  <tr > <td style="height: 50px;">Market Value</td> <td style="text-align: right; font-weight: 900;"> <a style="background-color: #E4ECF7; color: #505780; padding: 0 7% 0 7%; border-radius: 10px;">GH¢ 180,000</a></td></tr>
+                                  <tr> <td>Selling Price</td> <td style="text-align: right; font-weight: 900;"> <a style="background-color: #E4ECF7; color: #505780; padding: 0 7% 0 7%; border-radius: 10px;">GH¢ 190,000</a></td></tr>
+                              </tbody>
+                          </table>
+                        </div>
+                      <a href="{% url 'details' %}" class="card-btn">More Details →</a>
+                    </div>
+                  </div>
+            </div>
+
+            <div class="col-md-3" style="margin-right: 20px; margin-bottom: 20px">
+                <div class="card" style="width: 18rem; padding: 2%; border-radius: 4%;">
+                    {% load static %}
+                    <img class="card-img-top" style="border-radius: 4%;" src="{% static 'advertisements/civic.jpeg' %}" alt="Logo">
+                    
+                    <div class="card-body">
+                      <h5 class="card-title">Honda Civic 2020</h5>
+                      <div class="card-text" style="margin-bottom: 15%;">
+                          <table style="width: 100%;">
+                              <tbody>
+                                  <tr > <td style="height: 50px;">Market Value</td> <td style="text-align: right; font-weight: 900;"> <a style="background-color: #E4ECF7; color: #505780; padding: 0 7% 0 7%; border-radius: 10px;">GH¢ 180,000</a></td></tr>
+                                  <tr> <td>Selling Price</td> <td style="text-align: right; font-weight: 900;"> <a style="background-color: #E4ECF7; color: #505780; padding: 0 7% 0 7%; border-radius: 10px;">GH¢ 190,000</a></td></tr>
+                              </tbody>
+                          </table>
+                        </div>
+                      <a href="{% url 'details' %}" class="card-btn">More Details →</a>
+                    </div>
+                  </div>
+            </div>
+
+            <div class="col-md-3" style="margin-right: 20px; margin-bottom: 20px">
+                <div class="card" style="width: 18rem; padding: 2%; border-radius: 4%;">
+                    {% load static %}
+                    <img class="card-img-top" style="border-radius: 4%;" src="{% static 'advertisements/civic.jpeg' %}" alt="Logo">
+                    
+                    <div class="card-body">
+                      <h5 class="card-title">Honda Civic 2020</h5>
+                      <div class="card-text" style="margin-bottom: 15%;">
+                          <table style="width: 100%;">
+                              <tbody>
+                                  <tr > <td style="height: 50px;">Market Value</td> <td style="text-align: right; font-weight: 900;"> <a style="background-color: #E4ECF7; color: #505780; padding: 0 7% 0 7%; border-radius: 10px;">GH¢ 180,000</a></td></tr>
+                                  <tr> <td>Selling Price</td> <td style="text-align: right; font-weight: 900;"> <a style="background-color: #E4ECF7; color: #505780; padding: 0 7% 0 7%; border-radius: 10px;">GH¢ 190,000</a></td></tr>
+                              </tbody>
+                          </table>
+                        </div>
+                      <a href="{% url 'details' %}" class="card-btn">More Details →</a>
+                    </div>
+                  </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
