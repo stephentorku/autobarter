@@ -77,8 +77,12 @@ WSGI_APPLICATION = 'autobarter.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'autobarter',
+        'USER': 'postgres',
+        'PASSWORD':'EtornaM18',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 

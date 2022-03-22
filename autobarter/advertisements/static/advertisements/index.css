@@ -107,3 +107,21 @@ div.card-text table tbody tr td {
     color: #505780;
 
   }
+
+  .top-section-div{
+    background: white; 
+    width: 38%; 
+    display: block;
+     margin: 0 auto; 
+     padding: 2%; 
+     border-radius: 4px; 
+     margin-top: 5%;
+  }
+
+  .top-section-h1{
+    display: block;
+    margin: 0 auto; 
+    color: #FFFFFF;
+    padding: 2%; 
+    margin-top: 13%;
+  }
