@@ -6,7 +6,8 @@
 
 
 <div>
-    <h1 class="index-h2" style="padding-top: 12%">Vendor Profile</h1>
+    <h1 class="index-h2" style="padding-top: 12%">Hello, {{request.user}}</h1><br>
+    <a href="{% url 'logout' %}">Log out</a>
 </div>
 
 
