@@ -10,12 +10,12 @@
     </div>
     
     <div class="column" style="width: 35%; padding: 0px; padding-top: 12%;"> 
-        <h3>Honda Civic 2020</h3><br>
+        <h3>{{advertisement.title}}</h3><br>
         <h5>Market Value</h5>
-        <a style="background-color: #E4ECF7; color: #505780; padding: 0 7% 0 7%; border-radius: 10px; font-weight: 800; font-size: 22px"> GH¢ 110,000 </a> 
+        <a style="background-color: #E4ECF7; color: #505780; padding: 0 7% 0 7%; border-radius: 10px; font-weight: 800; font-size: 22px"> GH¢ {{advertisement.market_value}} </a> 
         <br><br>
         <h5>Selling Price</h5>
-        <a style="background-color: #E4ECF7; color: #505780; padding: 0 7% 0 7%; border-radius: 10px; font-weight: 800; font-size: 22px"> GH¢ 115,000 </a> <br><br>
+        <a style="background-color: #E4ECF7; color: #505780; padding: 0 7% 0 7%; border-radius: 10px; font-weight: 800; font-size: 22px"> GH¢ {{advertisement.selling_price}} </a> <br><br>
 
         <h5>Retailer Details</h5>
 
@@ -43,42 +43,72 @@
         <div class="col-md-2" style="text-align: center; font-weight: 800; font-size: 22px;">
             {% load static %}
             <img class="" style="width: 80px; padding-left: 5%" src="{% static 'advertisements/body-type.png' %}" alt="body-type"><br>
-            <a>Sedan</a>
+            <a>{{advertisement.body_type}}</a>
         </div>
 
         <div class="col-md-2" style="text-align: center; font-weight: 800; font-size: 22px;">
             {% load static %}
             <img class="" style="width: 80px; padding-left: 5%" src="{% static 'advertisements/engine.png' %}" alt="engine"><br>
-            <a>1.5</a>
+            <a>{{advertisement.engine_capacity}}</a>
         </div>
 
         
         <div class="col-md-2" style="text-align: center; font-weight: 800; font-size: 22px;">
             {% load static %}
             <img class="" style="width: 80px; padding-left: 5%" src="{% static 'advertisements/transmission.png' %}" alt="transmission"><br>
-            <a>Automatic</a>
+            <a>{{advertisement.transmission}}</a>
         </div>
 
         <div class="col-md-2" style="text-align: center; font-weight: 800; font-size: 22px;">
             {% load static %}
             <img class="" style="width: 80px; padding-left: 5%" src="{% static 'advertisements/fuel.png' %}" alt="fuel"><br>
-            <a>Petrol</a>
+            <a>{{advertisement.fuel_type}}</a>
         </div>
         <div class="col-md-2" style="text-align: center; font-weight: 800; font-size: 22px;">
             {% load static %}
             <img class="" style="width: 80px; padding-left: 5%" src="{% static 'advertisements/license-plate.png' %}" alt="plate"><br>
-            <a>Not Registered</a>
+            <a>{{advertisement.car_registered}}</a>
         </div>
     </div>
 </div>
 
 <h3 style="padding-left: 3%; padding-top: 8%">Description</h3><br><br>
 <div style="width: 60%; padding-left: 3%; line-height: 2"> 
-    At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium 
-    voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint 
-    occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt 
-    mollitia animi, id est laborum et dolorum fuga.
+    {{advertisement.description}}
 </div>
+
+<br>
+<!--Carousel Wrapper-->
+<div id="carousel-example-1z" class="carousel slide carousel-fade" data-ride="carousel">
+    <!--Indicators-->
+    <ol class="carousel-indicators">
+    {% for p in photos %}
+      <li data-target="#carousel-example-1z" data-slide-to="{{ forloop.counter0 }}" class="{% if forloop.counter0 == 0 %} active {% endif %}"></li>
+    {% endfor %}
+    </ol>
+    <!--/.Indicators-->
+    <!--Slides-->
+    <div class="carousel-inner" role="listbox">
+      {% for p in photos %}
+      <div class="carousel-item {% if forloop.counter0 == 0 %} active {% endif %}">
+        <img class="d-block w-100" src="{{p.images.url}}"
+          alt="First slide">
+    </div>
+      {% endfor %}
+      <!--/First slide-->
+    <!--/.Slides-->
+    <!--Controls-->
+    <a class="carousel-control-prev" href="#carousel-example-1z" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carousel-example-1z" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+    <!--/.Controls-->
+  </div>
+
 
 
 {% endblock %}

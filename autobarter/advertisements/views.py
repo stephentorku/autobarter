@@ -1,6 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
 
+
+from .models import Advertisement, AdvertisementImage
 # Create your views here.
 
 
@@ -9,10 +11,16 @@ def index(request):
 
 
 def advertisements(request):
-    return render(request, 'advertisements/advertisements.html')
+    advertisements = Advertisement.objects.all()
+    context = {'advertisements': advertisements}
+    return render(request, 'advertisements/advertisements.html', context)
 
-def details(request):
-    return render(request, 'advertisements/advertisement_details.html')
+def details(request, id):
+    advertisement = get_object_or_404(Advertisement, id=id)
+    photos = AdvertisementImage.objects.filter(advertisement=advertisement)
+
+    context ={'advertisement': advertisement, 'photos': photos}
+    return render(request, 'advertisements/advertisement_details.html', context)
 
 @login_required(login_url="login")
 def vendor_profile(request):

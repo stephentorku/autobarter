@@ -56,7 +56,7 @@
             <div class="row">
                 
     
-                <div class="col-md-3" style="margin-right: 20px; margin-bottom: 20px">
+                {% comment %} <div class="col-md-3" style="margin-right: 20px; margin-bottom: 20px">
                     <div class="card" style="width: 18rem; padding: 2%; border-radius: 4%;">
                         {% load static %}
                         <img class="card-img-top" style="border-radius: 4%;" src="{% static 'advertisements/civic.jpeg' %}" alt="Logo">
@@ -74,153 +74,32 @@
                           <a href="{% url 'details' %}" class="card-btn">More Details →</a>
                         </div>
                       </div>
-                </div>
+                </div> {% endcomment %}
+
+                {% for advertisement in advertisements %}
+                  <div class="col-md-3" style="margin-right: 20px; margin-bottom: 20px">
+                      <div class="col-md-3">
+                          <div class="card" style="width: 18rem; padding: 2%; border-radius: 4%;">
+                              <img class="card-img-top" style="border-radius: 4%;" src="{{advertisement.post_image.url}}" alt="Logo">
+                              <div class="card-body">
+                                <h5 class="card-title">{{advertisement.title}}</h5>
+                                <div class="card-text" style="margin-bottom: 15%;">
+                                  <table style="width: 100%;">
+                                      <tbody>
+                                          <tr > <td style="height: 50px;">Market Value</td> <td style="text-align: right; font-weight: 900;"> <a style="background-color: #E4ECF7; color: #505780; padding: 0 7% 0 7%; border-radius: 10px;">GH¢ {{advertisement.market_value}}</a></td></tr>
+                                          <tr> <td>Selling Price</td> <td style="text-align: right; font-weight: 900;"> <a style="background-color: #E4ECF7; color: #505780; padding: 0 7% 0 7%; border-radius: 10px;">GH¢ {{advertisement.selling_price}}</a></td></tr>
+                                      </tbody>
+                                  </table>
+                                </div>
+                                <a href="{% url 'details' advertisement.id %}" class="card-btn">More Details →</a>
+                              </div>
+                            </div>
+                      </div>
+                  </div>
+                {% endfor %}
+                  
     
-                <div class="col-md-3" style="margin-right: 20px; margin-bottom: 20px">
-                    <div class="col-md-3">
-                        <div class="card" style="width: 18rem; padding: 2%; border-radius: 4%;">
-                            <img class="card-img-top" style="border-radius: 4%;" src="{% static 'advertisements/corolla.png' %}" alt="Logo">
-                            <div class="card-body">
-                              <h5 class="card-title">Toyota Corolla 2019</h5>
-                              <div class="card-text" style="margin-bottom: 15%;">
-                                <table style="width: 100%;">
-                                    <tbody>
-                                        <tr > <td style="height: 50px;">Market Value</td> <td style="text-align: right; font-weight: 900;"> <a style="background-color: #E4ECF7; color: #505780; padding: 0 7% 0 7%; border-radius: 10px;">GH¢ 180,000</a></td></tr>
-                                        <tr> <td>Selling Price</td> <td style="text-align: right; font-weight: 900;"> <a style="background-color: #E4ECF7; color: #505780; padding: 0 7% 0 7%; border-radius: 10px;">GH¢ 190,000</a></td></tr>
-                                    </tbody>
-                                </table>
-                              </div>
-                              <a href="#" class="card-btn">More Details →</a>
-                            </div>
-                          </div>
-                    </div>
-                </div>
-                
-                    <div class="col-md-3">
-                        <div class="card" style="width: 18rem; padding: 2%; border-radius: 4%;">
-                            <img class="card-img-top" style="border-radius: 4%" src="{% static 'advertisements/corolla.png' %}" alt="Logo">
-                            <div class="card-body">
-                              <h5 class="card-title">Toyota Corolla 2019</h5>
-                              <div class="card-text" style="margin-bottom: 15%;">
-                                <table style="width: 100%;">
-                                    <tbody>
-                                        <tr > <td style="height: 50px;">Market Value</td> <td style="text-align: right; font-weight: 900;"> <a style="background-color: #E4ECF7; color: #505780; padding: 0 7% 0 7%; border-radius: 10px;">GH¢ 180,000</a></td></tr>
-                                        <tr> <td>Selling Price</td> <td style="text-align: right; font-weight: 900;"> <a style="background-color: #E4ECF7; color: #505780; padding: 0 7% 0 7%; border-radius: 10px;">GH¢ 190,000</a></td></tr>
-                                    </tbody>
-                                </table>
-                              </div>
-                              <a href="#" class="card-btn">More Details →</a>
-                            </div>
-                          </div>
-                    </div>
-
-                    <div class="col-md-3" style="margin-right: 20px; margin-bottom: 20px">
-                        <div class="card" style="width: 18rem; padding: 2%; border-radius: 4%;">
-                            <img class="card-img-top" style="border-radius: 4%" src="{% static 'advertisements/corolla.png' %}" alt="Logo">
-                            <div class="card-body">
-                              <h5 class="card-title">Toyota Corolla 2019</h5>
-                              <div class="card-text" style="margin-bottom: 15%;">
-                                <table style="width: 100%;">
-                                    <tbody>
-                                        <tr > <td style="height: 50px;">Market Value</td> <td style="text-align: right; font-weight: 900;"> <a style="background-color: #E4ECF7; color: #505780; padding: 0 7% 0 7%; border-radius: 10px;">GH¢ 180,000</a></td></tr>
-                                        <tr> <td>Selling Price</td> <td style="text-align: right; font-weight: 900;"> <a style="background-color: #E4ECF7; color: #505780; padding: 0 7% 0 7%; border-radius: 10px;">GH¢ 190,000</a></td></tr>
-                                    </tbody>
-                                </table>
-                              </div>
-                              <a href="#" class="card-btn">More Details →</a>
-                            </div>
-                          </div>
-                    </div>
-
-                    <div class="col-md-3" style="margin-right: 20px; margin-bottom: 20px">
-                        <div class="card" style="width: 18rem; padding: 2%; border-radius: 4%;">
-                            <img class="card-img-top" style="border-radius: 4%" src="{% static 'advertisements/corolla.png' %}" alt="Logo">
-                            <div class="card-body">
-                              <h5 class="card-title">Toyota Corolla 2019</h5>
-                              <div class="card-text" style="margin-bottom: 15%;">
-                                <table style="width: 100%;">
-                                    <tbody>
-                                        <tr > <td style="height: 50px;">Market Value</td> <td style="text-align: right; font-weight: 900;"> <a style="background-color: #E4ECF7; color: #505780; padding: 0 7% 0 7%; border-radius: 10px;">GH¢ 180,000</a></td></tr>
-                                        <tr> <td>Selling Price</td> <td style="text-align: right; font-weight: 900;"> <a style="background-color: #E4ECF7; color: #505780; padding: 0 7% 0 7%; border-radius: 10px;">GH¢ 190,000</a></td></tr>
-                                    </tbody>
-                                </table>
-                              </div>
-                              <a href="#" class="card-btn">More Details →</a>
-                            </div>
-                          </div>
-                    </div>
-
-                    <div class="col-md-3" style="margin-right: 20px; margin-bottom: 20px">
-                        <div class="card" style="width: 18rem; padding: 2%; border-radius: 4%;">
-                            <img class="card-img-top" style="border-radius: 4%" src="{% static 'advertisements/corolla.png' %}" alt="Logo">
-                            <div class="card-body">
-                              <h5 class="card-title">Toyota Corolla 2019</h5>
-                              <div class="card-text" style="margin-bottom: 15%;">
-                                <table style="width: 100%;">
-                                    <tbody>
-                                        <tr > <td style="height: 50px;">Market Value</td> <td style="text-align: right; font-weight: 900;"> <a style="background-color: #E4ECF7; color: #505780; padding: 0 7% 0 7%; border-radius: 10px;">GH¢ 180,000</a></td></tr>
-                                        <tr> <td>Selling Price</td> <td style="text-align: right; font-weight: 900;"> <a style="background-color: #E4ECF7; color: #505780; padding: 0 7% 0 7%; border-radius: 10px;">GH¢ 190,000</a></td></tr>
-                                    </tbody>
-                                </table>
-                              </div>
-                              <a href="#" class="card-btn">More Details →</a>
-                            </div>
-                          </div>
-                    </div>
-
-                    <div class="col-md-3" style="margin-right: 20px; margin-bottom: 20px">
-                        <div class="card" style="width: 18rem; padding: 2%; border-radius: 4%;">
-                            <img class="card-img-top" style="border-radius: 4%" src="{% static 'advertisements/corolla.png' %}" alt="Logo">
-                            <div class="card-body">
-                              <h5 class="card-title">Toyota Corolla 2019</h5>
-                              <div class="card-text" style="margin-bottom: 15%;">
-                                <table style="width: 100%;">
-                                    <tbody>
-                                        <tr > <td style="height: 50px;">Market Value</td> <td style="text-align: right; font-weight: 900;"> <a style="background-color: #E4ECF7; color: #505780; padding: 0 7% 0 7%; border-radius: 10px;">GH¢ 180,000</a></td></tr>
-                                        <tr> <td>Selling Price</td> <td style="text-align: right; font-weight: 900;"> <a style="background-color: #E4ECF7; color: #505780; padding: 0 7% 0 7%; border-radius: 10px;">GH¢ 190,000</a></td></tr>
-                                    </tbody>
-                                </table>
-                              </div>
-                              <a href="#" class="card-btn">More Details →</a>
-                            </div>
-                          </div>
-                    </div>
-
-                    <div class="col-md-3" style="margin-right: 20px; margin-bottom: 20px">
-                        <div class="card" style="width: 18rem; padding: 2%; border-radius: 4%;">
-                            <img class="card-img-top" style="border-radius: 4%" src="{% static 'advertisements/corolla.png' %}" alt="Logo">
-                            <div class="card-body">
-                              <h5 class="card-title">Toyota Corolla 2019</h5>
-                              <div class="card-text" style="margin-bottom: 15%;">
-                                <table style="width: 100%;">
-                                    <tbody>
-                                        <tr> <td style="height: 50px;">Market Value</td> <td style="text-align: right; font-weight: 900;"> <a style="background-color: #E4ECF7; color: #505780; padding: 0 7% 0 7%; border-radius: 10px;">GH¢ 180,000</a></td></tr>
-                                        <tr> <td>Selling Price</td> <td style="text-align: right; font-weight: 900;"> <a style="background-color: #E4ECF7; color: #505780; padding: 0 7% 0 7%; border-radius: 10px;">GH¢ 190,000</a></td></tr>
-                                    </tbody>
-                                </table>
-                              </div>
-                              <a href="#" class="card-btn">More Details →</a>
-                            </div>
-                          </div>
-                    </div>
-
-                    <div class="col-md-3" style="margin-right: 20px; margin-bottom: 20px">
-                        <div class="card" style="width: 18rem; padding: 2%; border-radius: 4%;">
-                            <img class="card-img-top" style="border-radius: 4%" src="{% static 'advertisements/corolla.png' %}" alt="Logo">
-                            <div class="card-body">
-                              <h5 class="card-title">Toyota Corolla 2019</h5>
-                              <div class="card-text" style="margin-bottom: 15%;">
-                                <table style="width: 100%;">
-                                    <tbody>
-                                        <tr> <td style="height: 50px;">Market Value</td> <td style="text-align: right; font-weight: 900;"> <a style="background-color: #E4ECF7; color: #505780; padding: 0 7% 0 7%; border-radius: 10px;">GH¢ 180,000</a></td></tr>
-                                        <tr> <td>Selling Price</td> <td style="text-align: right; font-weight: 900;"> <a style="background-color: #E4ECF7; color: #505780; padding: 0 7% 0 7%; border-radius: 10px;">GH¢ 190,000</a></td></tr>
-                                    </tbody>
-                                </table>
-                              </div>
-                              <a href="#" class="card-btn">More Details →</a>
-                            </div>
-                          </div>
-                    </div>
+  
                 
     
             

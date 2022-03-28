@@ -63,12 +63,20 @@ class Advertisement(models.Model):
     car_registered = models.CharField(max_length=1, choices=registered_choices)
     registration_year = models.IntegerField(choices=year_choices(), default=current_year())
     market_value = models.CharField(max_length=50)
+    selling_price = models.CharField(max_length=50)
     description = models.TextField()
-    reporter = models.ForeignKey(User, on_delete=models.CASCADE)
+    vendor = models.ForeignKey(User, on_delete=models.CASCADE)
+    post_image = models.FileField(blank=True)
 
-    
+    def __str__(self):
+        return self.title
 
+class AdvertisementImage(models.Model):
+    advertisement = models.ForeignKey(Advertisement, default=None, on_delete=models.CASCADE)
+    images = models.FileField(upload_to = 'images/')
 
+    def __str__(self):
+        return self.advertisement.title
 
     
     
