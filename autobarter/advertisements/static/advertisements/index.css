@@ -125,3 +125,11 @@ div.card-text table tbody tr td {
     padding: 2%; 
     margin-top: 13%;
   }
+
+  .modal-content {
+    width: 700px;
+   border:none;
+ }
+ .modal-body {
+    padding: 0;
+ }

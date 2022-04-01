@@ -1,0 +1,127 @@
+{% extends 'advertisements/navbar.html' %}
+
+{% block body %}
+
+<form action="" method="post">
+    {% csrf_token %}
+
+    
+
+
+<div style="width: 50%; margin: 0 auto; padding-top: 12%">
+    <input type="text" id="details" name="details" class="custom-input-rect" placeholder="Title of Ad  &#128269;" required><br>
+
+    <select id="make" name="make" class="custom-input-rect" required>
+        <option value="">Make of Car:</option>
+        <option value="honda">Honda</option>
+        <option value="hyundai">Hyundai</option>
+        <option value="toyota">Toyota</option>
+    </select>
+
+    <select id="model" name="model" class="custom-input-rect" required>
+        <option value="">Model of Car:</option>
+        <option value="civic">Civic</option>
+        <option value="elantra">Elantra</option>
+        <option value="accord">Accord</option>
+        <option value="accent">Accent</option>
+    </select>
+
+    <select id="year_of_manufacture" name="year_of_manufacture" class="custom-input-rect" required>
+        <option value="">Year of Manufacture:</option>
+        <option value="2021">2021</option>
+        <option value="2020">2020</option>
+        <option value="2019">2019</option>
+        <option value="2018">2018</option>
+        <option value="2017">2017</option>
+        <option value="2016">2016</option>
+        <option value="2015">2015</option>
+        <option value="2014">2014</option>
+        <option value="2013">2013</option>
+        <option value="2012">2012</option>
+        <option value="2011">2011</option>
+    </select>
+
+    <select id="body_type" name="body_type" class="custom-input-rect" required>
+        <option value="">Body Type:</option>
+        <option value="sedan">Sedan</option>
+        <option value="suv">SUV</option>
+        <option value="hatchback">Hatchback</option>
+    </select>
+    
+    <input type="number" id="mileage" name="mileage" class="custom-input-rect" placeholder="Mileage of Vehicle " required><br>
+
+    <select id="transmission" name="transmission" class="custom-input-rect" required>
+        <option value="">Transmission of Car:</option>
+        <option value="a">Automatic</option>
+        <option value="m">Manual</option>
+    </select>
+
+    <select id="fuel_type" name="fuel_type" class="custom-input-rect" required>
+        <option value="">Fuel Type:</option>
+        <option value="p">Petrol</option>
+        <option value="d">Diesel</option>
+    </select>
+
+    <select id="transmission" name="transmission" class="custom-input-rect" required>
+        <option value="">Transmission of Car:</option>
+        <option value="a">Automatic</option>
+        <option value="m">Manual</option>
+    </select>
+
+    <input type="number" id="engine_capcity" name="engine_capcity" class="custom-input-rect" placeholder="Engine Capacity" required><br>
+
+    <select id="trim_edition" name="trim_edition" class="custom-input-rect" required>
+        <option value="">Trim/ Edition:</option>
+        <option value="standard">Standard</option>
+        <option value="full option">Full Option</option>
+        <option value="gt">GT</option>
+        <option value="sport">Sport</option>
+        <option value="touring">Touring</option>
+    </select>
+
+    <select id="location" name="location" class="custom-input-rect" required>
+        <option value="">Location:</option>
+        <option value="GA">Greater Accra</option>
+        <option value="AR">Ashanti Region</option>
+        <option value="EA">Eastern Region</option>
+        <option value="NR">Northern Region</option>
+      </select>
+{% comment %} add logic to hide other option if car not registered {% endcomment %}
+      <select id="car_registered" name="car_registered" class="custom-input-rect" required>
+        <option value="">Is the car registered:</option>
+        <option value="y">Yes</option>
+        <option value="n">No</option>
+   
+      </select>
+    
+    
+
+      <select id="year_of_registration" name="year_of_registration" class="custom-input-rect" required>
+        <option value="">Year of Registration:</option>
+        <option value="2021">2021</option>
+        <option value="2020">2020</option>
+        <option value="2019">2019</option>
+        <option value="2018">2018</option>
+        <option value="2017">2017</option>
+        <option value="2016">2016</option>
+        <option value="2015">2015</option>
+        <option value="2014">2014</option>
+        <option value="2013">2013</option>
+        <option value="2012">2012</option>
+        <option value="2011">2011</option>
+    </select><br>
+
+    <input type="text" id="selling_price" name="selling_price" class="custom-input-rect" placeholder="Input your selling price" required><br>
+
+    <label>Upload post image</label><br>
+    <input required name="post_image" type="file" multiple class="form-control-file"><br>
+
+    <label>Upload more images</label><br>
+    <input required name="images" type="file" multiple class="form-control-file">
+
+<div><br>
+    <input type="submit" name="submit">
+</form>
+
+
+{% endblock %}
