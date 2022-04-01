@@ -2,14 +2,20 @@
 
 {% block body %}
 
-<form action="" method="post">
+<form action="" method="POST">
     {% csrf_token %}
 
     
 
 
 <div style="width: 50%; margin: 0 auto; padding-top: 12%">
-    <input type="text" id="details" name="details" class="custom-input-rect" placeholder="Title of Ad  &#128269;" required><br>
+    <input type="text" id="title" name="title" class="custom-input-rect" placeholder="Title of Ad" required><br>
+
+    <select id="foreign_ghana" name="foreign_ghana" class="custom-input-rect" required>
+        <option value="">Foreign/Ghanaian Used:</option>
+        <option value="g">Ghanaian</option>
+        <option value="f">Foreign</option>
+    </select>
 
     <select id="make" name="make" class="custom-input-rect" required>
         <option value="">Make of Car:</option>
@@ -68,7 +74,7 @@
         <option value="m">Manual</option>
     </select>
 
-    <input type="number" id="engine_capcity" name="engine_capcity" class="custom-input-rect" placeholder="Engine Capacity" required><br>
+    <input type="number" step = "0.1" id="engine_capacity" name="engine_capacity" class="custom-input-rect" placeholder="Engine Capacity" required><br>
 
     <select id="trim_edition" name="trim_edition" class="custom-input-rect" required>
         <option value="">Trim/ Edition:</option>
@@ -111,7 +117,9 @@
         <option value="2011">2011</option>
     </select><br>
 
-    <input type="text" id="selling_price" name="selling_price" class="custom-input-rect" placeholder="Input your selling price" required><br>
+    <input type="number" id="selling_price" name="selling_price" class="custom-input-rect" placeholder="Input your selling price" required><br>
+
+    <input type="textarea" id="description" name="description" class="custom-input-rect" placeholder="Input description of car" required><br>
 
     <label>Upload post image</label><br>
     <input required name="post_image" type="file" multiple class="form-control-file"><br>
