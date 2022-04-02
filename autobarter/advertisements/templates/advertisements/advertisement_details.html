@@ -94,7 +94,7 @@
         <div class="col-md-2" style="text-align: center; font-weight: 800; font-size: 22px;">
             {% load static %}
             <img class="" style="width: 80px; padding-left: 5%" src="{% static 'advertisements/body-type.png' %}" alt="body-type"><br>
-            <a>{{advertisement.body_type}}</a>
+            <a>{{advertisement.body_type|title}}</a>
         </div>
 
         <div class="col-md-2" style="text-align: center; font-weight: 800; font-size: 22px;">
@@ -107,18 +107,30 @@
         <div class="col-md-2" style="text-align: center; font-weight: 800; font-size: 22px;">
             {% load static %}
             <img class="" style="width: 80px; padding-left: 5%" src="{% static 'advertisements/transmission.png' %}" alt="transmission"><br>
-            <a>{{advertisement.transmission}}</a>
+            {% if advertisement.transmission == "a" %}
+            <a>Automatic</a>
+            {% else %}
+            <a>Manual</a>
+            {% endif %}
         </div>
 
         <div class="col-md-2" style="text-align: center; font-weight: 800; font-size: 22px;">
             {% load static %}
             <img class="" style="width: 80px; padding-left: 5%" src="{% static 'advertisements/fuel.png' %}" alt="fuel"><br>
-            <a>{{advertisement.fuel_type}}</a>
+            {% if advertisement.fuel_type == "p" %}
+            <a>Petrol</a>
+            {% else %}
+            <a>Diesel</a>
+            {% endif %}
         </div>
         <div class="col-md-2" style="text-align: center; font-weight: 800; font-size: 22px;">
             {% load static %}
             <img class="" style="width: 80px; padding-left: 5%" src="{% static 'advertisements/license-plate.png' %}" alt="plate"><br>
-            <a>{{advertisement.car_registered}}</a>
+            {% if advertisement.car_registered == "y" %}
+            <a>Registered</a>
+            {% else %}
+            <a>Not Registered</a>
+            {% endif %}
         </div>
     </div>
 </div>

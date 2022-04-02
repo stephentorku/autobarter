@@ -1,5 +1,5 @@
 from turtle import title
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 import pickle
 import numpy as np
@@ -73,7 +73,7 @@ def new_ad(request):
                       data['car_registered'],
                       int(data['year_of_registration'])
         ]])
-        print(X)
+       
         X[:, 0] = le_fg.transform(X[:,0])
         X[:, 1] = le_model.transform(X[:,1])
         X[:, 2] = le_make.transform(X[:,2])
@@ -121,6 +121,8 @@ def new_ad(request):
             advertisement=advertisement,
             image=image,
         )
+
+        return redirect("details/" + str(advertisement.id))
 
 
 
