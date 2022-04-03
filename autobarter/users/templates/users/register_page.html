@@ -1,16 +1,22 @@
 {% extends 'users/layout.html' %}
 
 {% block body %}
-<h1 style="font-weight: 800; color: #0D67B5;">Create Account</h1>
-<div>
+<h1 style="font-weight: 800; color: #0D67B5; text-align: left">Create Account</h1>
+<div class = "input-icons" style="text-align: left; width: 450px; color: #0D67B5; font-weight: 300">
 <form method="POST" action="">
 {% csrf_token %}
 
-{{form.first_name.label}}
-{{form.first_name}}<br>
-
-{{form.last_name.label}}
-{{form.last_name}} <br>
+<div>
+    <div style="width: 48%; float: left;">
+    {{form.first_name.label}}
+    {{form.first_name}}<br>
+    </div>
+    
+    <div style="width: 48%; float: left; margin-left: 15px">
+    {{form.last_name.label}}
+    {{form.last_name}} <br>
+    </div>
+</div>
 
 {{form.username.label}}
 {{form.username}} <br>
@@ -18,15 +24,28 @@
 {{form.email.label}}
 {{form.email}} <br>
 
-{{form.password1.label}}
-{{form.password1}} <br>
+<div>
+    <div style="width: 48%; float: left;">
+        {{form.password1.label}}
+        {{form.password1}} <br>
+    </div>
+    
+    <div style="width: 48%; float: left; margin-left: 15px">
+        {{form.password2.label}}
+        {{form.password2}} <br>
+    </div>
+</div>
 
-{{form.password2.label}}
-{{form.password2}} <br>
+<div>
+    <input class = "auth-input-submit" type="submit" value="Sign Up">
+</div>
+<div style="text-align: center; padding-top: 3%">
+    Already a Member? <a style="text-decoration: none; color: #22C1DC; font-weight: 500" href="{% url 'login'%}">Sign In</a>
+</div>
 
 
 {{form.errors}}
-<input type="submit">
+
 
 </form>
 </div>

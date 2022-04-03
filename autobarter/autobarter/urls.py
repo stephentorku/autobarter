@@ -21,4 +21,6 @@ urlpatterns = [
     path('authenticate/', include('users.urls')),
     path('', include('advertisements.urls')),
     
+    
+    
 ]

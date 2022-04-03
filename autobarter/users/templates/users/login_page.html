@@ -1,12 +1,31 @@
 {% extends 'users/layout.html' %}
 
 {% block body %}
-<h1>Test login</h1>
+<h1 style="color: #0D67B5; text-align: left">Sign In</h1>
 <form method ="POST" action="">
     {% csrf_token %}
-    <input type="text" name="username">
-    <input type="password" name="password">
+    <div class = "input-icons" style="text-align: left; width: 450px; color: #0D67B5; font-weight: 300">
+        
+        <div>
+            <label>Username:</label><br>
+            <i class="fa fa-envelope-o icon"></i>
+            <input class="auth-input" type="text" name="username"><br>
+        </div>
+
+        <div>
+            <label>Password:</label><br>
+            <i class="fa fa-eye-slash icon"></i>
+            <input class="auth-input" type="password" name="password">
+        </div>
+
+        <div>
+            <input class = "auth-input-submit" type="submit" value="Sign In">
+        </div>
+        <div style="text-align: center; padding-top: 3%">
+            Not a Member? <a style="text-decoration: none; color: #22C1DC; font-weight: 500" href="{% url 'register'%}">Sign Up</a>
+        </div>
+    </div>
     {{error}}
-    <input type="submit">
+    
 </form>
 {% endblock %}
