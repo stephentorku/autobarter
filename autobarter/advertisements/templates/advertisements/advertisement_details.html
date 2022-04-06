@@ -25,10 +25,12 @@
         <a style="background-color: #E4ECF7; color: #505780; padding: 0 7% 0 7%; border-radius: 10px; font-weight: 800; font-size: 15px"> &#128222; 022444245 </a>
         &nbsp;
         {% comment %} &#128222; 022444245 <br><br> {% endcomment %}
-        <a style="background-color: #E4ECF7; color: #505780; padding: 0 7% 0 7%; border-radius: 10px; font-weight: 800; font-size: 15px"> &#128172; Chat with Seller </a> <br>
+        <a style="background-color: #E4ECF7; color: #505780; padding: 0 7% 0 7%; border-radius: 10px; font-weight: 800; font-size: 15px"> &#128172; Chat with Seller </a> <br><br>
 
         {% comment %} &#128172; Chat with Seller {% endcomment %}
-        <a href="#" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#largeModal">Click to view more photos</a>
+
+        <a href="#" class="m-photos-btn" data-toggle="modal" data-target="#largeModal">Click to view more photos</a>
+
 
 
     
@@ -131,6 +133,11 @@
             {% else %}
             <a>Not Registered</a>
             {% endif %}
+        </div>
+        <div class="col-md-2" style="text-align: center; font-weight: 800; font-size: 22px;">
+            {% load static %}
+            <img class="" style="width: 80px; padding-left: 5%" src="{% static 'advertisements/odometer.png' %}" alt="mileage"><br>
+            <a>{{advertisement.mileage_km|title}} km</a>
         </div>
     </div>
 </div>

@@ -3,7 +3,7 @@ from .forms import CreateUserForm
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-
+from django.contrib.auth.models import Group
 
 
 # Create your views here.
@@ -36,7 +36,10 @@ def registerPage(request):
         if request.method == 'POST':
             form = CreateUserForm(request.POST)
             if form.is_valid():
-                form.save()
+                user = form.save()
+                account_type=request.POST.get('user_type')
+                group = Group.objects.get(name=str(account_type))
+                user.groups.add(group)
                 messages.success(request, "Account successfully created")
                 return redirect('login')
 

@@ -3,6 +3,8 @@ from django.db import models
 from django.contrib.auth.models import User
 import datetime
 
+from django.forms import DateField
+
 # Create your models here.
 
 class Test(models.Model):
@@ -66,6 +68,7 @@ class Advertisement(models.Model):
     selling_price = models.IntegerField()
     description = models.TextField()
     vendor = models.ForeignKey(User, on_delete=models.CASCADE)
+    date_added = models.DateTimeField(auto_now_add=True)
     post_image = models.FileField(blank=True)
 
     def __str__(self):
@@ -78,7 +81,15 @@ class AdvertisementImage(models.Model):
     def __str__(self):
         return self.advertisement.title
 
-    
+class Comment(models.Model):
+    advertisement = models.ForeignKey(Advertisement, related_name = "comments", on_delete=models.CASCADE)    
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    body = models.TextField()
+    date_added = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return '%s - %s' % (self.advertisement.title, self.author.first_name)
+
     
 
 

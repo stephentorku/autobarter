@@ -17,20 +17,10 @@
         <option value="f">Foreign</option>
     </select>
 
-    <select id="make" name="make" class="custom-input-rect" required>
-        <option value="">Make of Car:</option>
-        <option value="honda">Honda</option>
-        <option value="hyundai">Hyundai</option>
-        <option value="toyota">Toyota</option>
-    </select><br>
-    Cannot find your vehicle? Use this <a href="{% url 'new_ad_na'%}">form</a><br>
-    <select id="model" name="model" class="custom-input-rect" required>
-        <option value="">Model of Car:</option>
-        <option value="civic">Civic</option>
-        <option value="elantra">Elantra</option>
-        <option value="accord">Accord</option>
-        <option value="accent">Accent</option>
-    </select>
+    <input type="text" id="make" name="make" class="custom-input-rect" placeholder="Make of Car" required><br>
+
+    <input type="text" id="model" name="model" class="custom-input-rect" placeholder="Model of Car" required><br>
+
 
     <select id="year_of_manufacture" name="year_of_manufacture" class="custom-input-rect" required>
         <option value="">Year of Manufacture:</option>

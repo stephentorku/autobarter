@@ -6,6 +6,8 @@ import numpy as np
 import os
 
 from .models import Advertisement, AdvertisementImage
+from .decorators import unauthenticated_user, allowed_users
+from django.contrib.auth.models import Group
 # Create your views here.
 
 
@@ -49,7 +51,7 @@ engine_capacity = model_data["engine_capacity"]
 registration_year = model_data["registration_year"]
 year_of_manufacture = model_data["year_of_manufacture"]
 
-@login_required(login_url='login')
+@allowed_users(allowed_roles=['vendor'])
 def new_ad(request):
     user = request.user
 
@@ -129,6 +131,46 @@ def new_ad(request):
 
     return render(request, 'advertisements/new_advertisement.html')
 
-@login_required(login_url="login")
+def new_ad_na(request):
+    user = request.user
+
+    if request.method == 'POST':
+        data = request.POST
+        images = request.FILES.getlist('images')
+
+        advertisement = Advertisement.objects.create(
+            title = data['title'],
+            foreign_ghana = data['foreign_ghana'],
+            model = data['model'],
+            make = data['make'],
+            year_of_manufacture = data['year_of_manufacture'],
+            body_type = data['body_type'],
+            mileage_km = data['mileage'],
+            transmission = data['transmission'],
+            fuel_type = data['fuel_type'],
+            engine_capacity = data['engine_capacity'],
+            trim_edition = data['trim_edition'],
+            location = data['location'],
+            car_registered = data['car_registered'],
+            registration_year = data['year_of_registration'],
+            selling_price = data['selling_price'],
+            post_image = data['post_image'],
+            description = data['description'],
+            vendor = user,
+            market_value = "Not Available"
+            )
+
+        for image in images:
+            photo = AdvertisementImage.objects.create(
+            advertisement=advertisement,
+            image=image,
+        )
+
+        return redirect("details/" + str(advertisement.id))
+    return render(request, 'advertisements/new_advertisement_na.html')
+
+
+
+@allowed_users(allowed_roles=['vendor'])
 def vendor_profile(request):
     return render(request, 'advertisements/vendor_profile.html')

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Advertisement, AdvertisementImage
+from .models import Advertisement, AdvertisementImage, Comment
 # Register your models here.
 
 
@@ -16,3 +16,5 @@ class PostAdmin(admin.ModelAdmin):
 @admin.register(AdvertisementImage)
 class AdvertisementImageAdmin(admin.ModelAdmin):
     pass
+
+admin.site.register(Comment)

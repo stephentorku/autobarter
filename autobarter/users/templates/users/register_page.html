@@ -37,8 +37,22 @@
 </div>
 
 <div>
+    <div>Register as a: </div><br>
+    <div style="width: 48%; float: left;">
+        <input type="radio" id="buyer" name="user_type" value="buyer" required>
+        <label for="buyer">Buyer</label>
+    </div>
+    
+    <div style="width: 48%; float: left; margin-left: 15px">
+        <input type="radio" id="vendor" name="user_type" value="vendor">
+        <label for="vendor">Vendor</label>
+    </div>
+</div>
+
+<div>
     <input class = "auth-input-submit" type="submit" value="Sign Up">
 </div>
+
 <div style="text-align: center; padding-top: 3%">
     Already a Member? <a style="text-decoration: none; color: #22C1DC; font-weight: 500" href="{% url 'login'%}">Sign In</a>
 </div>

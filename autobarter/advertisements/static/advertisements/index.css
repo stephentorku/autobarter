@@ -133,3 +133,12 @@ div.card-text table tbody tr td {
  .modal-body {
     padding: 0;
  }
+
+ .m-photos-btn{
+  background-color: #0D67B5;
+  color: #FFFFFF;
+  border: none;
+  font-family: Montserrat;
+  padding: 10px;
+  border-radius: 14px;
+ }
