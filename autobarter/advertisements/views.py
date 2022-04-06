@@ -1,3 +1,4 @@
+from distutils.log import error
 from turtle import title
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
@@ -29,7 +30,7 @@ def details(request, id):
 
 def load_model():
     module_dir = os.path.dirname(__file__)
-    file_path = os.path.join(module_dir, 'autobarter_model.pkl')
+    file_path = os.path.join(module_dir, 'autobarter_new.pkl')
     with open(file_path, 'rb') as file:
         data = pickle.load(file)
     return data
@@ -50,6 +51,7 @@ mileage = model_data["mileage"]
 engine_capacity = model_data["engine_capacity"]
 registration_year = model_data["registration_year"]
 year_of_manufacture = model_data["year_of_manufacture"]
+model_error = model_data["error"]
 
 @allowed_users(allowed_roles=['vendor'])
 def new_ad(request):
@@ -89,9 +91,20 @@ def new_ad(request):
         X[:, 11] = le_registered.transform(X[:,11])
         X = X.astype(float)
 
-        y_pred = regressor.predict(X)
-            
 
+        
+        y_pred = regressor.predict(X)
+        print(model_error)
+
+
+        rounded_error = int(round(model_error, -3))
+        #create lower bound figure
+        lower_bound = int(y_pred[0]) - rounded_error
+        #create upper bound figure
+        upper_bound = int(y_pred[0]) + rounded_error
+        #round them to thousand
+        #convert to string
+        price_range = str(lower_bound) + " - " + str(upper_bound)
 
 
 
@@ -115,7 +128,8 @@ def new_ad(request):
             description = data['description'],
             vendor = user,
             #calculate market value from model
-            market_value = str(y_pred)
+            #market_value = str(y_pred[0])
+            market_value = price_range
             )
 
         for image in images:
@@ -124,7 +138,7 @@ def new_ad(request):
             image=image,
         )
 
-        return redirect("details/" + str(advertisement.id))
+        return redirect("details/" + str(advertisement.id)+"/")
 
 
 
