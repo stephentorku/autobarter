@@ -57,7 +57,7 @@
                 <li><a style ="font-family: Montserrat;" href="{% url 'new_ad' %}"><span class="mr-2">+</span> Post an Ad</a></li>
                 {% load auth_extras %}
                 {% if request.user.is_authenticated and request.user|has_group:"vendor" %}
-                  <li><a style ="font-family: Montserrat;" href=""><span class="mr-2">+</span> Dashboard</a></li>
+                  <li><a style ="font-family: Montserrat;" href="{% url 'dashboard' %}"><span class="mr-2">+</span> Dashboard</a></li>
                 {% endif %}
 
                 {% if request.user.is_authenticated %}

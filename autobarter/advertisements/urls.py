@@ -13,4 +13,5 @@ urlpatterns = [
     path('new_ad/', views.new_ad, name='new_ad'),
     path('new_ad_na', views.new_ad_na, name='new_ad_na'),
     path('value_car', views.value_car, name='value_car'),
+    path('dashboard', views.dashboard, name='dashboard'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

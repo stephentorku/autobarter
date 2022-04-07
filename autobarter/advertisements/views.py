@@ -17,7 +17,9 @@ from django.contrib.auth.models import User
 
 def index(request):
     advertisements = Advertisement.objects.all()
-    return render(request, 'advertisements/index.html')
+
+    context = {'advertisements': advertisements}
+    return render(request, 'advertisements/index.html', context)
 
 
 def advertisements(request):
@@ -211,3 +213,7 @@ def vendor_profile(request, username):
 
 def value_car(request):
     return render(request, 'advertisements/value_car.html')
+
+
+def dashboard(request):
+    return render(request, 'advertisements/dashboard.html')

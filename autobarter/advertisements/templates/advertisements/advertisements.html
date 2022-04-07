@@ -17,35 +17,31 @@
                     <div class="card" style="width: 18rem; padding: 15%; border-radius: 8px;"><br>
                         <h5>Filter Results</h5><br>
 
-                        <select id="location" name="location" class="custom-input-rect">
-                            <option value="">Location</option>
-                            <option value="greater-accra">Greater Accra</option>
-                            <option value="ashanti">Ashanti Region</option>
-                            <option value="eastern">Eastern Region</option>
-                            <option value="north">Northern Region</option>
-                          </select>
-
                           <br>
-
-                          <select id="sort" name="sort" class="custom-input-rect">
-                            <option value="">Sort by:</option>
-                            <option value="low-high">Price: Low to High</option>
-                            <option value="high-low">Price: High to Low</option>
-                            <option value="latest-oldest">Time: Latest to Oldest</option>
-                            <option value="oldest-latest">Time: Oldest to Latest</option>
-                          </select>
-                          <br>
-
-                          <a href="#" class="card-btn" style="width: 100px; padding:5px; text-align: center">Filter →</a>
-
-                          <br><br><br>
-                          <h5>New Search</h5><br>
-                          <input type="text" id="details" name="details" class="custom-input-rect" placeholder="Input Details  &#128269;"><br>
-                          <a href="#" class="card-btn" style="width: 100px; padding:5px; text-align: center">Search &#32; &#128269;</a><br>
                           <form method="get">
-                            {{adFilter.form}}
             
-                        <button class="btn btn-primary" type="submit">Search</button>
+                            {{adFilter.form.title}}<br><br>
+
+                            <a style="font-size:13px">{{adFilter.form.make.label}} :</a><br>
+                            {{adFilter.form.make}}<br><br>
+
+                            {{adFilter.form.model.label}}<br>
+                            {{adFilter.form.model}}<br><br>
+
+                            {{adFilter.form.transmission.label}}<br>
+                            {{adFilter.form.transmission}}<br><br>
+
+                            {{adFilter.form.year_of_manufacture.label}}<br>
+                            {{adFilter.form.year_of_manufacture}}<br><br>
+
+                            {{adFilter.form.location.label}}<br>
+                            {{adFilter.form.location}}<br><br>
+
+                            {{adFilter.form.minimum_price}}<br><br>
+
+                            {{adFilter.form.maximum_price}}<br><br><br>
+            
+                        <button class="card-btn"  style="width: 100px; padding:5px; text-align: center; border: none" type="submit">Filter →</button>
 
                     </div>
 
