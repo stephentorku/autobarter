@@ -11,6 +11,7 @@ from .decorators import unauthenticated_user, allowed_users
 from django.contrib.auth.models import Group
 from .filters import AdvertisementFilter, AdvertisementHomeFilter
 from users.models import UserDetails
+from django.contrib.auth.models import User
 # Create your views here.
 
 
@@ -199,9 +200,14 @@ def new_ad_na(request):
 
 
 
-@allowed_users(allowed_roles=['vendor'])
-def vendor_profile(request):
-    return render(request, 'advertisements/vendor_profile.html')
+
+def vendor_profile(request, username):
+    vendor = get_object_or_404(User, username=username)
+    advertisements = Advertisement.objects.filter(vendor=vendor)
+    vendor_details = UserDetails.objects.filter(user=vendor)
+
+    context={'advertisements': advertisements, 'vendor': vendor, 'vendor_details': vendor_details}
+    return render(request, 'advertisements/vendor_profile.html', context)
 
 def value_car(request):
     return render(request, 'advertisements/value_car.html')
