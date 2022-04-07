@@ -9,29 +9,37 @@ import os
 from .models import Advertisement, AdvertisementImage, Comment
 from .decorators import unauthenticated_user, allowed_users
 from django.contrib.auth.models import Group
+from .filters import AdvertisementFilter, AdvertisementHomeFilter
+from users.models import UserDetails
 # Create your views here.
 
 
 def index(request):
+    advertisements = Advertisement.objects.all()
     return render(request, 'advertisements/index.html')
 
 
 def advertisements(request):
     advertisements = Advertisement.objects.all()
-    context = {'advertisements': advertisements}
+
+    adFilter = AdvertisementFilter(request.GET, queryset=advertisements)
+    advertisements = adFilter.qs 
+
+    context = {'advertisements': advertisements, 'adFilter': adFilter}
     return render(request, 'advertisements/advertisements.html', context)
 
 def details(request, id):
     advertisement = get_object_or_404(Advertisement, id=id)
     photos = AdvertisementImage.objects.filter(advertisement=advertisement)
     comments = Comment.objects.filter(advertisement=advertisement)
+    vendor_details = UserDetails.objects.filter(user=advertisement.vendor)
 
     if request.method == 'POST':
         data = request.POST
         comment_body= data['comment']
         comment = Comment.objects.create(advertisement=advertisement, author=request.user, body=comment_body)
 
-    context ={'advertisement': advertisement, 'photos': photos, 'comments': comments}
+    context ={'advertisement': advertisement, 'photos': photos, 'comments': comments, 'vendor_details': vendor_details }
     return render(request, 'advertisements/advertisement_details.html', context)
 
 def load_model():
@@ -194,3 +202,6 @@ def new_ad_na(request):
 @allowed_users(allowed_roles=['vendor'])
 def vendor_profile(request):
     return render(request, 'advertisements/vendor_profile.html')
+
+def value_car(request):
+    return render(request, 'advertisements/value_car.html')

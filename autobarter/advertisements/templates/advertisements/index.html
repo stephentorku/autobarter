@@ -54,10 +54,9 @@
     
 
                 <li><a style ="font-family: Montserrat;" href="{% url 'advertisements' %}">Latest Ads</a></li>
-                <li><a style ="font-family: Montserrat;" href="blog.html">Sell Your Car</a></li>
-                <li><a style ="font-family: Montserrat;" href="contact.html">Value Your Car</a></li>
-                <li><a style ="font-family: Montserrat;" href="post-job.html"><span class="mr-2">+</span> Post an Ad</a></li>
-                <li><a style ="font-family: Montserrat;" href="login.html">Log In</a></li>
+                <li><a style ="font-family: Montserrat;" href="{% url 'value_car' %}">Value Your Car</a></li>
+                <li><a style ="font-family: Montserrat;" href="{% url 'new_ad' %}"><span class="mr-2">+</span> Post an Ad</a></li>
+                <li><a style ="font-family: Montserrat;" href="{% url 'login' %}">Log In</a></li>
               </ul>
             </nav>
         </div>
@@ -84,7 +83,7 @@
         
            
             
-           <form>
+           <form method="get" action="{% url 'advertisements' %}">
             <select id="location" name="location" class="custom-input-rect" style="width: 30%;padding: 7px;">
               <option value="">Location</option>
               <option value="GA">Greater Accra</option>
@@ -118,7 +117,7 @@
         <br> <br>
 
 
-        <a href="#" class="card-btn" style="width: 100px; padding:8px; text-align: center">Search &#32; &#128269;</a>
+        <input type="submit" class="card-btn" style="width: 100px; padding:8px; text-align: center; border: none" value="Search &#32; &#128269;">
 
           </form>
       </div>
@@ -200,7 +199,7 @@
     </div>
     </div>
 
- <div style="margin: 0 auto; margin-top: 5%; width: 170px;">   <a href="" class="vm-btn">View More →</a></div>
+ <div style="margin: 0 auto; margin-top: 5%; width: 170px;">   <a href="{% url 'advertisements' %}" class="vm-btn">View More →</a></div>
     <div class="divider"></div>
 
     <h1 style="text-align: center; margin-bottom: 60px;">When buying a vehicle...</h1>

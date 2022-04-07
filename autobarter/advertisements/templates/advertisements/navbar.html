@@ -53,10 +53,9 @@
     
 
                 <li><a style ="font-family: Montserrat;" href="{% url 'advertisements' %}">Latest Ads</a></li>
-                <li><a style ="font-family: Montserrat;" href="blog.html">Sell Your Car</a></li>
-                <li><a style ="font-family: Montserrat;" href="contact.html">Value Your Car</a></li>
-                <li><a style ="font-family: Montserrat;" href="post-job.html"><span class="mr-2">+</span> Post an Ad</a></li>
-                <li><a style ="font-family: Montserrat;" href="login.html">Log In</a></li>
+                <li><a style ="font-family: Montserrat;" href="{% url 'value_car' %}">Value Your Car</a></li>
+                <li><a style ="font-family: Montserrat;" href="{% url 'new_ad' %}"><span class="mr-2">+</span> Post an Ad</a></li>
+                <li><a style ="font-family: Montserrat;" href="{% url 'login' %}">Log In</a></li>
               </ul>
             </nav>
         </div>
