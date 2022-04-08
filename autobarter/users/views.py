@@ -4,7 +4,7 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import Group
-
+from .models import UserDetails
 
 # Create your views here.
 
@@ -35,8 +35,16 @@ def registerPage(request):
         
         if request.method == 'POST':
             form = CreateUserForm(request.POST)
+            data = request.POST
             if form.is_valid():
                 user = form.save()
+                user_details = UserDetails.objects.create(
+                    user=user,
+                    first_name=data['first_name'],
+                    last_name=data['last_name'],
+                    email=data['email'],
+                    username=data['username']
+                    )
                 account_type=request.POST.get('user_type')
                 group = Group.objects.get(name=str(account_type))
                 user.groups.add(group)

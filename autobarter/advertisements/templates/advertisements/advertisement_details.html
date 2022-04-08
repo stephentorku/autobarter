@@ -18,9 +18,10 @@
         <a style="background-color: #E4ECF7; color: #505780; padding: 0 7% 0 7%; border-radius: 10px; font-weight: 800; font-size: 22px"> GH¢ {{advertisement.selling_price}} </a> <br><br>
 
         <h5>Retailer Details</h5>
-
         {% load static %}
-        <img class="" style="width: 80px; padding-left: 5%" src="{% static 'advertisements/user.png' %}" alt="user"> &nbsp;<a href="{% url 'profile' advertisement.vendor.username %}"> {{advertisement.vendor.first_name}} {{advertisement.vendor.last_name}}</a>
+        {% for vendor in vendor_details %} 
+        <img class="" style="width: 80px; padding-left: 5%" src="{{vendor.profile_picture.url}}" alt="user"> &nbsp;<a href="{% url 'profile' advertisement.vendor.username %}"> {{advertisement.vendor.first_name}} {{advertisement.vendor.last_name}}</a>
+        {% endfor %}
         <br><br>
         <a style="background-color: #E4ECF7; color: #505780; padding: 0 7% 0 7%; border-radius: 10px; font-weight: 800; font-size: 15px"> &#128222; {% for vendor in vendor_details %} {{vendor.phone_number}}  {% endfor %}</a>
         &nbsp;

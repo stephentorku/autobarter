@@ -69,7 +69,7 @@ class Advertisement(models.Model):
     description = models.TextField()
     vendor = models.ForeignKey(User, on_delete=models.CASCADE)
     date_added = models.DateTimeField(auto_now_add=True)
-    post_image = models.FileField(blank=True)
+    post_image = models.FileField(blank=True, upload_to = 'images/')
 
     def __str__(self):
         return self.title

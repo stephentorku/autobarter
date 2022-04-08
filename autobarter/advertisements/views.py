@@ -12,6 +12,7 @@ from django.contrib.auth.models import Group
 from .filters import AdvertisementFilter, AdvertisementHomeFilter
 from users.models import UserDetails
 from django.contrib.auth.models import User
+from .forms import UserDetailsForm
 # Create your views here.
 
 
@@ -212,8 +213,82 @@ def vendor_profile(request, username):
     return render(request, 'advertisements/vendor_profile.html', context)
 
 def value_car(request):
+    if request.method == 'POST':
+        data = request.POST
+        images = request.FILES.getlist('images')
+
+
+        X = np.array([[
+                      data['foreign_ghana'],
+                      data['model'], 
+                      data['make'],
+                      int(data['year_of_manufacture']),       
+                      data['body_type'],
+                      float(data['mileage']), 
+                      data['transmission'],
+                      data['fuel_type'],
+                      float(data['engine_capacity']),
+                      data['trim_edition'],
+                      data['location'],
+                      data['car_registered'],
+                      int(data['year_of_registration'])
+        ]])
+       
+        X[:, 0] = le_fg.transform(X[:,0])
+        X[:, 1] = le_model.transform(X[:,1])
+        X[:, 2] = le_make.transform(X[:,2])
+        X[:, 4] = le_body_type.transform(X[:,4])
+
+        X[:, 6] = le_transmission.transform(X[:,6])
+        X[:, 7] = le_fuel_type.transform(X[:,7])
+
+        X[:, 9] = le_trim_edition.transform(X[:,9])
+        X[:, 10] = le_location.transform(X[:,10])
+        X[:, 11] = le_registered.transform(X[:,11])
+        X = X.astype(float)
+
+
+        
+        y_pred = regressor.predict(X)
+        print(model_error)
+
+
+        rounded_error = int(round(model_error, -3))
+        #create lower bound figure
+        lower_bound = int(y_pred[0]) - rounded_error
+        #create upper bound figure
+        upper_bound = int(y_pred[0]) + rounded_error
+        #round them to thousand
+        #convert to string
+        price_range = str(lower_bound) + " - " + str(upper_bound)
+        request.session['car_name'] =   data['make'] + " " + data['model'] + " " + str(data['year_of_manufacture'])
+        request.session['market_value']= price_range
+        return redirect('show_car_value')
     return render(request, 'advertisements/value_car.html')
 
+def show_car_value(request):
+    context={'car_name': request.session['car_name'],'market_value': request.session['market_value'] }
+    return render(request, 'advertisements/value_results.html', context)
 
 def dashboard(request):
-    return render(request, 'advertisements/dashboard.html')
+    user = request.user
+    user_details = request.user.userdetails
+    advertisements = Advertisement.objects.filter(vendor=user)
+    number_of_ads = advertisements.count()
+    form = UserDetailsForm(instance=user_details)
+
+    if request.method == 'POST':
+        data = request.POST
+        form = UserDetailsForm(request.POST, request.FILES,instance=user_details)
+        if form.is_valid():
+            form.save()
+            user.first_name = data['first_name']
+            user.last_name = data['last_name']
+            user.email = data['email']
+            user.username = data['username']
+            user.save(update_fields=['first_name', 'last_name', 'email', 'username'])
+
+
+
+    context = {'form': form, 'number_of_ads': number_of_ads, 'advertisements': advertisements}
+    return render(request, 'advertisements/dashboard.html', context)
