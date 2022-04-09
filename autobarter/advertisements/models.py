@@ -52,8 +52,8 @@ class Advertisement(models.Model):
 
     title = models.CharField(max_length=100)
     foreign_ghana = models.CharField(max_length=1, choices=f_g)
-    model = models.CharField(blank=True, choices=car_model.choices, max_length=10)
-    make = models.CharField(blank=True, choices=car_make.choices, max_length=10)
+    model = models.CharField(blank=True, choices=car_model.choices, max_length=20)
+    make = models.CharField(blank=True, choices=car_make.choices, max_length=20)
     year_of_manufacture = models.IntegerField(choices=year_choices(), default=current_year())
     body_type = models.CharField(blank=True, choices=body_types.choices, max_length=10)
     mileage_km = models.IntegerField()
@@ -76,7 +76,7 @@ class Advertisement(models.Model):
 
 class AdvertisementImage(models.Model):
     advertisement = models.ForeignKey(Advertisement, default=None, on_delete=models.CASCADE)
-    images = models.FileField(upload_to = 'images/')
+    image = models.FileField(upload_to = 'images/')
 
     def __str__(self):
         return self.advertisement.title

@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 import pickle
 import numpy as np
 import os
+from django.urls import reverse
 
 from .models import Advertisement, AdvertisementImage, Comment
 from .decorators import unauthenticated_user, allowed_users
@@ -142,7 +143,7 @@ def new_ad(request):
             car_registered = data['car_registered'],
             registration_year = data['year_of_registration'],
             selling_price = data['selling_price'],
-            post_image = data['post_image'],
+             post_image = images[0],
             description = data['description'],
             vendor = user,
             #calculate market value from model
@@ -153,10 +154,10 @@ def new_ad(request):
         for image in images:
             photo = AdvertisementImage.objects.create(
             advertisement=advertisement,
-            image=image,
+            image=image
         )
 
-        return redirect("details/" + str(advertisement.id)+"/")
+        return redirect(reverse('details', kwargs={"id": advertisement.id}))
 
 
 
@@ -186,7 +187,7 @@ def new_ad_na(request):
             car_registered = data['car_registered'],
             registration_year = data['year_of_registration'],
             selling_price = data['selling_price'],
-            post_image = data['post_image'],
+            post_image = images[0],
             description = data['description'],
             vendor = user,
             market_value = "Not Available"
@@ -195,10 +196,10 @@ def new_ad_na(request):
         for image in images:
             photo = AdvertisementImage.objects.create(
             advertisement=advertisement,
-            image=image,
+            image=image
         )
 
-        return redirect("details", id = advertisement.id)
+        return redirect(reverse('details', kwargs={"id": advertisement.id}))
     return render(request, 'advertisements/new_advertisement_na.html')
 
 

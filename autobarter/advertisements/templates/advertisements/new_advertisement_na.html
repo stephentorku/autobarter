@@ -2,7 +2,7 @@
 
 {% block body %}
 
-<form action="" method="POST">
+<form action="" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
 
     
@@ -106,10 +106,7 @@
 
     <input type="textarea" id="description" name="description" class="custom-input-rect" placeholder="Input description of car" required><br>
 
-    <label>Upload post image</label><br>
-    <input required name="post_image" type="file" multiple class="form-control-file"><br>
-
-    <label>Upload more images</label><br>
+    <label>Upload images</label><br>
     <input required name="images" type="file" multiple class="form-control-file">
 
 <div><br>

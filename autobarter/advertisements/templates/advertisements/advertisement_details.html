@@ -60,7 +60,7 @@
                     <div class="carousel-inner" role="listbox">
                     {% for p in photos %}
                     <div class="carousel-item {% if forloop.counter0 == 0 %} active {% endif %}">
-                        <img class="d-block w-100" src="{{p.images.url}}"
+                        <img class="d-block w-100" src="{{p.image.url}}"
                         alt="First slide">
                     </div>
                     {% endfor %}
@@ -167,7 +167,12 @@
     <form action="" method="POST">
         {% csrf_token %}
         <input type="textarea" name="comment" id="comment" required>
-        <input type="submit" value="Post Comment">
+
+        {% if request.user.is_authenticated %}
+            <input type="submit" value="Post Comment">
+            {% else %}
+            <a>Login to comment</a>
+        {% endif %}
     </form>    
 </div>
 
