@@ -56,7 +56,3 @@ def getChats(request):
         chats = Chat.objects.filter(buyer=user)
         context={'chats': chats}
         return render(request, 'chat/all_chats.html', context)
-
-
-def getChatForBuyer(request):
-    pass
