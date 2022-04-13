@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'advertisements',
     'users',
     'django_filters',
+    'chat',
 ]
 
 MIDDLEWARE = [

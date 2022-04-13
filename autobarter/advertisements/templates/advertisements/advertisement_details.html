@@ -26,8 +26,13 @@
         <a style="background-color: #E4ECF7; color: #505780; padding: 0 7% 0 7%; border-radius: 10px; font-weight: 800; font-size: 15px"> &#128222; {% for vendor in vendor_details %} {{vendor.phone_number}}  {% endfor %}</a>
         &nbsp;
         {% comment %} &#128222; 022444245 <br><br> {% endcomment %}
-        <a style="background-color: #E4ECF7; color: #505780; padding: 0 7% 0 7%; border-radius: 10px; font-weight: 800; font-size: 15px"> &#128172; Chat with Seller </a> <br><br>
 
+        <form action="{% url 'checkchat' %}" method="POST">
+            {% csrf_token %}
+        <input type="hidden" name="username" id="username" value="{{advertisement.vendor.username}}"/>
+        {% comment %} <a style="background-color: #E4ECF7; color: #505780; padding: 0 7% 0 7%; border-radius: 10px; font-weight: 800; font-size: 15px"> &#128172; Chat with Seller </a> <br><br> {% endcomment %}
+        <input type="submit" value="Chat">
+        </form>
         {% comment %} &#128172; Chat with Seller {% endcomment %}
 
         <a href="#" class="m-photos-btn" data-toggle="modal" data-target="#largeModal">Click to view more photos</a>
