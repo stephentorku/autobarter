@@ -1,3 +1,4 @@
+from unicodedata import name
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from .models import Chat, Message
@@ -44,8 +45,18 @@ def getMessages(request, chat_id):
     messages = Message.objects.filter(chat=chat)
     return JsonResponse({"messages":list(messages.values())})
 
-def getChatForVendor(request):
-    pass
+def getChats(request):
+    user = request.user
+
+    if user.groups.filter(name="vendor"):
+        chats = Chat.objects.filter(vendor=user)
+        context={'chats': chats}
+        return render(request, 'chat/all_chats.html', context)
+    else:
+        chats = Chat.objects.filter(buyer=user)
+        context={'chats': chats}
+        return render(request, 'chat/all_chats.html', context)
+
 
 def getChatForBuyer(request):
     pass

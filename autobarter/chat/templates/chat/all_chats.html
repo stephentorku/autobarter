@@ -1,0 +1,20 @@
+
+
+{% load auth_extras %}
+
+{% for chat in chats %}
+
+
+{% comment %} if vendor,display buyer names and starting of message {% endcomment %}
+{% comment %} if buyer,display vendor names and starting of message {% endcomment %}
+{% if request.user.is_authenticated and request.user|has_group:"vendor" %}
+    <a href="{% url 'chat' chat.id %}"> {{chat.buyer.first_name}} {{chat.buyer.last_name}}</a>
+{% endif %} 
+
+{% if request.user.is_authenticated and request.user|has_group:"buyer" %}
+    <a href="{% url 'chat' chat.id %}"> {{chat.vendor.first_name}} {{chat.vendor.last_name}}</a>
+{% endif %} 
+
+
+
+{% endfor %}

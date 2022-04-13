@@ -10,5 +10,6 @@ urlpatterns = [
     path('checkchat', views.checkChat, name='checkchat'),
     path('send', views.send, name='send'),
     path('getMessages/<int:chat_id>/', views.getMessages, name='getMessages'),
+    path('all_chats', views.getChats, name="all_chats"),
 ] 
 # + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
