@@ -1,20 +1,62 @@
+{% extends 'chat/navbar.html' %}
 
+{% block body %}
 
-{% load auth_extras %}
+<style>
+	.profile-pic{
+		max-width: 20px;
+		max-height:20px;
+		margin: 0 auto;
+		border-radius: 20px;
+        margin-bottom: 5px;
+	}
+    .a-text{
+        padding-left: 10px; padding-bottom: 5px; text-decoration: none; color: black; font-weight: 600 
+    }
+    .chat-list-item{
 
-{% for chat in chats %}
+        box-shadow: 1px 1px 2px 1px rgba(0,0,0,0.10);
+    -webkit-box-shadow: 1px 1px 2px 1px rgba(0,0,0,0.10);   
+    -moz-box-shadow: 1px 1px 2px 1px rgba(0,0,0,0.10);
+        border: solid 1px #FFFFFF; padding: 3%; border-radius: 10px; width: 70%; margin: 0 auto; background-color: #FFFFFF;
+        margin-bottom: 5px;
+    }
+    .chats-item{
+        box-shadow: 1px 1px 2px 1px rgba(0,0,0,0.10);
+    -webkit-box-shadow: 1px 1px 2px 1px rgba(0,0,0,0.10);   
+    -moz-box-shadow: 1px 1px 2px 1px rgba(0,0,0,0.10);
+    }
+</style>
+<div style="width: 50%; margin: 0 auto; padding-top: 12%;">
+    <h2 style="text-align: center; padding-bottom: 3%">All Chats</h2>
 
+    {% load auth_extras %}
 
-{% comment %} if vendor,display buyer names and starting of message {% endcomment %}
-{% comment %} if buyer,display vendor names and starting of message {% endcomment %}
-{% if request.user.is_authenticated and request.user|has_group:"vendor" %}
-    <a href="{% url 'chat' chat.id %}"> {{chat.buyer.first_name}} {{chat.buyer.last_name}}</a>
-{% endif %} 
+    <div style="padding: 5%; border-radius: 10px; min-height: 400px; background-color: #f4f5f9" class="chats-item">
 
-{% if request.user.is_authenticated and request.user|has_group:"buyer" %}
-    <a href="{% url 'chat' chat.id %}"> {{chat.vendor.first_name}} {{chat.vendor.last_name}}</a>
-{% endif %} 
+        {% for chat in chats %}
+        <div style="" class="chat-list-item">
+        
+        
+        {% comment %} if vendor,display buyer names and starting of message {% endcomment %}
+        {% comment %} if buyer,display vendor names and starting of message {% endcomment %}
+        {% if request.user.is_authenticated and request.user|has_group:"vendor" %}
+                <img class="profile-pic" src="{{chat.buyer.userdetails.profile_picture.url}}" >  
+            <a class="a-text" href="{% url 'chat' chat.id %}"> {{chat.buyer.first_name|title}} {{chat.buyer.last_name|title}}</a><br>
+            <div style="color: grey; padding-left: 35px; font-weight: 200">{{last_message}}</div>
+        {% endif %} 
 
+        {% if request.user.is_authenticated and request.user|has_group:"buyer" %}
+             <img class="profile-pic" src="{{chat.vendor.userdetails.profile_picture.url}}" >
+            <a class="a-text"  href="{% url 'chat' chat.id %}"> {{chat.vendor.first_name|title}} {{chat.vendor.last_name|title}}</a><br>
+            <div style="color: grey; padding-left: 35px; font-weight: 200">{{last_message}}</div>
+        {% endif %} 
 
+        </div>
+        {% endfor %}
+        
+        
+    </div>
 
-{% endfor %}
+</div>
+{% endblock %}

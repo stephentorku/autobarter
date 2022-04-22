@@ -9,7 +9,6 @@ from django.forms import DateField
 class Chat(models.Model):
     #only buyers can start chats
     buyer = models.ForeignKey(User, on_delete=models.CASCADE, related_name="buyer")
-    #user2 is a vendor
     vendor = models.ForeignKey(User, on_delete=models.CASCADE, related_name="vendor")
     date_created = models.DateTimeField(auto_now_add=True)
 

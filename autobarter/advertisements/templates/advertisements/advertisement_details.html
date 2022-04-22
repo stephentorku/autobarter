@@ -2,7 +2,46 @@
 
 {% block body %}
 
+<style>
+    .chat-list-item{
 
+        box-shadow: 1px 1px 2px 1px rgba(0,0,0,0.10);
+    -webkit-box-shadow: 1px 1px 2px 1px rgba(0,0,0,0.10);   
+    -moz-box-shadow: 1px 1px 2px 1px rgba(0,0,0,0.10);
+        border: solid 1px #FFFFFF; padding: 3%; border-radius: 10px; width: 100%; margin: 0 auto; background-color: #FFFFFF;
+        margin-bottom: 1px;
+        line-height: 2;
+    }
+
+    .submit-btn{
+        border-radius: 15px;
+        background-color: #0D67B5;
+        color: #FFFFFF;
+        padding: 5px; 
+        border: none;
+        font-size: 80%;
+     }
+
+     .custom-input-rect-comment{
+        background: #FFFFFF;
+        width: 100%;
+        padding: 10px;
+        border: none;
+        color: #505780;
+        border-radius: 6px;
+        font-size: small;
+        font-weight: 800;
+        text-align: center;
+        
+      
+      
+      }
+      
+      .custom-input-rect-comment::placeholder{
+        color: #505780;
+      
+      }
+</style>
 <div class="row">
     <div class="column" style="width: 65%; padding-top: 12%;">
         {% load static %}
@@ -23,17 +62,27 @@
         <img class="" style="width: 80px; padding-left: 5%" src="{{vendor.profile_picture.url}}" alt="user"> &nbsp;<a href="{% url 'profile' advertisement.vendor.username %}"> {{advertisement.vendor.first_name}} {{advertisement.vendor.last_name}}</a>
         {% endfor %}
         <br><br>
-        <a style="background-color: #E4ECF7; color: #505780; padding: 0 7% 0 7%; border-radius: 10px; font-weight: 800; font-size: 15px"> &#128222; {% for vendor in vendor_details %} {{vendor.phone_number}}  {% endfor %}</a>
-        &nbsp;
-        {% comment %} &#128222; 022444245 <br><br> {% endcomment %}
-
-        <form action="{% url 'checkchat' %}" method="POST">
-            {% csrf_token %}
-        <input type="hidden" name="username" id="username" value="{{advertisement.vendor.username}}"/>
-        {% comment %} <a style="background-color: #E4ECF7; color: #505780; padding: 0 7% 0 7%; border-radius: 10px; font-weight: 800; font-size: 15px"> &#128172; Chat with Seller </a> <br><br> {% endcomment %}
-        <input type="submit" value="Chat">
-        </form>
+        <div class="container">
+        <div class="row">
+       <div class="col-md-6">
+        <a style="background-color: #E4ECF7; color: #505780; padding: 0 7% 0 7%; border-radius: 10px; font-weight: 800; font-size: 15px; float: left;"> &#128222; {% for vendor in vendor_details %} {{vendor.phone_number}}  {% endfor %}</a>
+       </div>
+        
+       {% load auth_extras %}
+       {% if request.user.is_authenticated and request.user|has_group:"buyer" %}
+            <div class="col-md-6">
+                <form action="{% url 'checkchat' %}" method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" name="username" id="username" value="{{advertisement.vendor.username}}"/>
+                    {% comment %} <a style="background-color: #E4ECF7; color: #505780; padding: 0 7% 0 7%; border-radius: 10px; font-weight: 800; font-size: 15px"> &#128172; Chat with Seller </a> <br><br> {% endcomment %}
+                    <input style="background-color: #E4ECF7; color: #505780; padding: 0 7% 0 7%; border-radius: 10px; font-weight: 800; font-size: 15px; border: none;" type="submit" value=" &#128172; Chat with Seller">
+                </form>
+            </div>
+        {% endif %}
+        </div>
+        </div>
         {% comment %} &#128172; Chat with Seller {% endcomment %}
+        <br>
 
         <a href="#" class="m-photos-btn" data-toggle="modal" data-target="#largeModal">Click to view more photos</a>
 
@@ -156,30 +205,37 @@
 <br>
 <div class="divider"></div>
 
-<h3 style="padding-left: 3%; padding-top: 8%">Comments...</h3><br><br>
-<div style="width: 60%; padding-left: 3%; line-height: 2">
-    {% for comment in comments%}
-    <strong>{{comment.author.first_name}} {{comment.author.last_name}} - {{comment.date_added}}</strong><br>
-    {{comment.body}}
-    <br><br>
-    {% endfor %}
+
+<div style="width: 70%; margin: 0 auto; padding: 2%; border-radius: 10px; background-color: #f4f5f9" >
+    <h3 style="padding-left: 3%; padding-top: 8%; text-align:center">Comments...</h3><br><br>
+    <div style="width: 80%; padding-left: 3%;">
+        {% for comment in comments%}
+        <div class="chat-list-item">
+        <strong>{{comment.author.first_name}} {{comment.author.last_name}} - {{comment.date_added}}</strong><br>
+        {{comment.body}}
+        </div>
+        <br><br>
+        {% endfor %}
+    </div>
+    <br>
+
+
+
+    <div style="width: 60%; padding-left: 3%; line-height: 2">
+        <form action="" method="POST">
+            {% csrf_token %}
+            <input class="custom-input-rect-comment" type="textarea" name="comment" id="comment" required> <br><br>
+
+            {% if request.user.is_authenticated %}
+                <input  class = "submit-btn" type="submit" value="Comment">
+                {% else %}
+                <a>Login to comment</a>
+            {% endif %}
+        </form>    
+    </div>
+
 </div>
 <br><br>
-
-
-
-<div style="width: 60%; padding-left: 3%; line-height: 2">
-    <form action="" method="POST">
-        {% csrf_token %}
-        <input type="textarea" name="comment" id="comment" required>
-
-        {% if request.user.is_authenticated %}
-            <input type="submit" value="Post Comment">
-            {% else %}
-            <a>Login to comment</a>
-        {% endif %}
-    </form>    
-</div>
 
   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>

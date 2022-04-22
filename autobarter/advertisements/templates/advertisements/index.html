@@ -44,44 +44,37 @@
     
       <!-- NAVBAR -->
       <header class="site-navbar mt-3">
-        <div class="container-fluid">
-          <div class="row align-items-center">
-            {% load static %}
-            <a href="{% url 'home' %}"><div class="site-logo col-md-6 "><img style="width:10%; height: 10%; border-radius: 0 20% 0 20%;" src="{% static 'advertisements/AutoBarterGh-logo.jpeg' %}" alt="Logo"></div></a>
-            <div class="col-md-6">
-            <nav class="mx-auto site-navigation">
-              <ul class="site-menu js-clone-nav d-none d-xl-block ml-0 pl-0">
-    
+        {% load static %}
+        <a href="{% url 'home' %}"><div class="site-logo col-md-4" style="padding: 0px"><img style="width:10%; height: 10%; border-radius: 0 20% 0 20%;" src="{% static 'advertisements/AutoBarterGh-logo.jpeg' %}" alt="Logo"></div></a>
+        <div class="col-md-8">
+        <nav class="mx-auto site-navigation" style="width:900px; margin:0 auto; color: #ffffff">
+          <ul class="site-menu js-clone-nav d-none d-xl-block ml-0 pl-0">
 
-                <li><a style ="font-family: Montserrat;" href="{% url 'advertisements' %}">Latest Ads</a></li>
-                <li><a style ="font-family: Montserrat;" href="{% url 'value_car' %}">Value Your Car</a></li>
-                <li><a style ="font-family: Montserrat;" href="{% url 'new_ad' %}"><span class="mr-2">+</span> Post an Ad</a></li>
+            <li><a style ="font-family: Montserrat; color: #ffffff" href="{% url 'advertisements' %}">Latest Ads</a></li>
+            <li><a style ="font-family: Montserrat; color: #ffffff" href="{% url 'value_car' %}">Value Your Car</a></li>
+            <li><a style ="font-family: Montserrat; color: #ffffff" href="{% url 'new_ad' %}"> Post an Ad</a></li>
 
-                {% load auth_extras %}
-                {% if request.user.is_authenticated and request.user|has_group:"vendor" %}
-                  <li><a style ="font-family: Montserrat;" href="{% url 'dashboard' %}"><span class="mr-2">+</span> Dashboard</a></li>
-                {% endif %}
+            {% load auth_extras %}
+            {% if request.user.is_authenticated and request.user|has_group:"vendor" %}
+              <li><a style ="font-family: Montserrat; color: #ffffff" href="{% url 'dashboard' %}">Dashboard</a></li>
+            {% endif %}
 
-                
-                {% if request.user.is_authenticated %}
-                    <li><a style ="font-family: Montserrat;" href="">Chats</a></li>
-                    <li><a style ="font-family: Montserrat;" href="{% url 'logout' %}">Log out</a></a></li>
-                  {% else %}
-                    <li><a style ="font-family: Montserrat;" href="{% url 'login' %}">Log In</a></li>
-                {% endif %}
-              </ul>
-            </nav>
-        </div>
-
-          </div>
-        </div>
+            
+            {% if request.user.is_authenticated %}
+            <li><a style ="font-family: Montserrat;  color: #ffffff" href="{% url 'all_chats' %}">Chats</a></li>
+            <li><a style ="font-family: Montserrat; color: #ffffff" href="{% url 'logout' %}">Log out</a></a></li>
+              {% else %}
+                <li><a style ="font-family: Montserrat; color: #ffffff" href="{% url 'login' %}">Log In</a></li>
+            {% endif %}
+          </ul>
+        </nav>
+    </div>
       </header>
 <style>
 
 .site-navbar .site-navigation .site-menu > li > a {
     color: rgba(255, 255, 255, 0.5);
 }
-
 </style>
 
 {% block body %}
@@ -136,7 +129,7 @@
 
     </div>
 
-
+    <div style="background-color: #F4F5F6">
     <div>
     <h1 class="index-h2">Browse New Car Deals</h1>
     </div>
@@ -147,7 +140,7 @@
             
           {% for advertisement in advertisements|slice:"3" %}
             <div class="col-md-3">
-                <div class="card" style="width: 18rem; padding: 2%; border-radius: 4%;">
+                <div class="card custom-box-shadow" style="width: 18rem; padding: 2%; border-radius: 4%; border: none">
                     {% load static %}
                     <img class="card-img-top" style="border-radius: 4%;" src='{{advertisement.post_image.url}}' alt="Logo">
                     
@@ -171,41 +164,44 @@
     </div>
     </div>
 
- <div style="margin: 0 auto; margin-top: 5%; width: 170px;">   <a href="{% url 'advertisements' %}" class="vm-btn">View More →</a></div>
-    <div class="divider"></div>
-
-    <h1 style="text-align: center; margin-bottom: 60px;">When buying a vehicle...</h1>
-    <div style="margin: 0 auto; width: 1300px; padding-left: 0%; height: 500px;">
+ <div style="margin: 0 auto; margin-top: 5%; width: 170px;">   <a style="color: black" href="{% url 'advertisements' %}" class="vm-btn">View More →</a></div>
+ <div style="background-color: #f5f5f7" class="divider"></div>
+  </div>
+    
+    <div style="background-color: #f5f5f7; height: 40%;">
+    <h1 style="text-align: center; margin-bottom: 60px; font-weight: 600;">When buying a vehicle...</h1>
+    <div style="margin: 0 auto; width: 1300px; padding-left: 0%;">
     <div class="container">
         <div class="row">
             <div class="col-md-4">
-                <div style="border: solid 1px #C0C0C0; padding: 10%; height: 350px;">
-                    <img class="card-img-top" style="width: 50%; padding-bottom: 12%;" src="{% static 'advertisements/new-car.png' %}" alt="Logo"><br>
-                    <p>Compare the market value of the vehicle to the retailer's 
-                        selling price to make sure you are getting a fair deal.</p>
+                <div style="border: solid 1px #C0C0C0; padding: 10%; height: 400px;">
+                    <img class="card-img-top" style="width: 50%; padding-bottom: 12%; margin:0 auto; display: block" src="{% static 'advertisements/new-car.png' %}" alt="Logo"><br>
+                    <a style="text-align:center">Compare the market value of the vehicle to the retailer's 
+                        selling price to make sure you are getting a fair deal.</a>
                     
                 </div>
             </div>
 
             <div class="col-md-4">
-                <div style="border: solid 1px #C0C0C0; padding: 10%; height: 350px;">
-                    <img class="card-img-top" style="width: 50%; padding-bottom: 12%;" src="{% static 'advertisements/car.png' %}" alt="Logo"><br>
-                    <p>Make sure to inspect the vehicle before making 
-                        the final move to purchase</p>
+                <div style="border: solid 1px #C0C0C0; padding: 10%; height: 400px;">
+                    <img class="card-img-top" style="width: 50%; padding-bottom: 12%; margin:0 auto; display: block" src="{% static 'advertisements/car.png' %}" alt="Logo"><br>
+                    <a style="text-align:center">Make sure to inspect the vehicle before making 
+                        the final move to purchase</a>
                     
                 </div>
             </div>
 
             <div class="col-md-4">
-                <div style="border: solid 1px #C0C0C0; padding: 10%; height: 350px; ">
-                    <img class="card-img-top" style="width: 50%; padding-bottom: 12%;" src="{% static 'advertisements/new-car.png' %}" alt="Logo"><br>
-                    <p> It is always advisable to meet in a public place to make transactions.
-                    </p>
+                <div style="border: solid 1px #C0C0C0; padding: 10%; height: 400px; ">
+                    <img class="card-img-top" style="width: 50%; padding-bottom: 12%; margin:0 auto; display: block" src="{% static 'advertisements/new-car.png' %}" alt="Logo"><br>
+                    <a style="text-align:center"> It is always advisable to meet in a public place to make transactions.
+                    </a>
                     
                 </div>
             </div>
         </div>
     </div>
     </div>
+  </div>
     
 {% endblock %}

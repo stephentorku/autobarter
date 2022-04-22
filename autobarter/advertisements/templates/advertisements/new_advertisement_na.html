@@ -2,116 +2,201 @@
 
 {% block body %}
 
+<style>
+    .form-item{
+        box-shadow: 1px 1px 2px 1px rgba(0,0,0,0.10);
+    -webkit-box-shadow: 1px 1px 2px 1px rgba(0,0,0,0.10);   
+    -moz-box-shadow: 1px 1px 2px 1px rgba(0,0,0,0.10);
+    padding: 5%; 
+    border-radius: 10px; 
+    min-height: 400px; 
+    background-color: #f4f5f9
+    }
+
+    .custom-input-rect-form{
+        background: #E5ECF7;
+        width: 90%;
+        padding: 12px;
+        border: none;
+        color: #505780;
+        border-radius: 6px;
+        font-size: 16px;
+        font-weight: 800;
+        text-align: center;
+        margin-bottom: 5%;
+      }
+    
+      .custom-input-rect-form::placeholder{
+        color: #505780; 
+      }
+
+      .submit-btn{
+        border-radius: 18px;
+        background-color: #0D67B5;
+        color: #FFFFFF;
+        padding: 15px; 
+        border: none;
+        font-size: 80%;
+     }
+    
+</style>
+
+<div style="width: 70%; margin: 0 auto; padding-top: 12%">
+
+<h2 style = "text-align: center; padding-bottom: 20px">Provide Car Details</h2>
+
+<div class="form-item" >
 <form action="" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
 
-    
+    <div class ="container">
+        <div class="row">
+
+            <input type="text" id="title" name="title" style="margin-bottom: 2%; width: 96%" class="custom-input-rect-form" placeholder="Title of Ad" required><br>
 
 
-<div style="width: 50%; margin: 0 auto; padding-top: 12%">
-    <input type="text" id="title" name="title" class="custom-input-rect" placeholder="Title of Ad" required><br>
+            <div class="col-md-4">
+                <select id="foreign_ghana" name="foreign_ghana" class="custom-input-rect-form" required>
+                    <option value="">Foreign/Ghanaian Used:</option>
+                    <option value="g">Ghanaian</option>
+                    <option value="f">Foreign</option>
+                </select>
+            </div>
 
-    <select id="foreign_ghana" name="foreign_ghana" class="custom-input-rect" required>
-        <option value="">Foreign/Ghanaian Used:</option>
-        <option value="g">Ghanaian</option>
-        <option value="f">Foreign</option>
-    </select>
+            <div class="col-md-4">
+                <input type="text" id="make" name="make" class="custom-input-rect-form" placeholder="Make of Car" required><br>
+            </div>
 
-    <input type="text" id="make" name="make" class="custom-input-rect" placeholder="Make of Car" required><br>
+            <div class="col-md-4">
+                <input type="text" id="model" name="model" class="custom-input-rect-form" placeholder="Model of Car" required><br>
+            </div>
 
-    <input type="text" id="model" name="model" class="custom-input-rect" placeholder="Model of Car" required><br>
+            <div class="col-md-4">
+                <select id="year_of_manufacture" name="year_of_manufacture" class="custom-input-rect-form" required>
+                    <option value="">Year of Manufacture:</option>
+                    <option value="2021">2021</option>
+                    <option value="2020">2020</option>
+                    <option value="2019">2019</option>
+                    <option value="2018">2018</option>
+                    <option value="2017">2017</option>
+                    <option value="2016">2016</option>
+                    <option value="2015">2015</option>
+                    <option value="2014">2014</option>
+                    <option value="2013">2013</option>
+                    <option value="2012">2012</option>
+                    <option value="2011">2011</option>
+                </select>
+            </div>
+
+            <div class="col-md-4">
+                <select id="body_type" name="body_type" class="custom-input-rect-form" required>
+                    <option value="">Body Type:</option>
+                    <option value="sedan">Sedan</option>
+                    <option value="suv">SUV</option>
+                    <option value="hatchback">Hatchback</option>
+                </select>
+            </div>
+
+            <div class="col-md-4">
+                <input type="number" id="mileage" name="mileage" class="custom-input-rect-form" placeholder="Mileage of Vehicle " required><br>
+            </div>
+
+            <div class="col-md-4">
+                <select id="fuel_type" name="fuel_type" class="custom-input-rect-form" required>
+                    <option value="">Fuel Type:</option>
+                    <option value="p">Petrol</option>
+                    <option value="d">Diesel</option>
+                </select>
+            </div>
+
+            <div class="col-md-4">
+                <select id="transmission" name="transmission" class="custom-input-rect-form" required>
+                    <option value="">Transmission of Car:</option>
+                    <option value="a">Automatic</option>
+                    <option value="m">Manual</option>
+                </select>
+            </div>
+
+            <div class="col-md-4">
+                <input type="number" step = "0.1" id="engine_capacity" name="engine_capacity" class="custom-input-rect-form" placeholder="Engine Capacity" required><br>
+
+            </div>
+
+            <div class="col-md-4">
+                <select id="trim_edition" name="trim_edition" class="custom-input-rect-form" required>
+                    <option value="">Trim/ Edition:</option>
+                    <option value="standard">Standard</option>
+                    <option value="full option">Full Option</option>
+                    <option value="gt">GT</option>
+                    <option value="sport">Sport</option>
+                    <option value="touring">Touring</option>
+                </select>
+            </div>
+
+            <div class="col-md-4">
+                <select id="location" name="location" class="custom-input-rect-form" required>
+                    <option value="">Location:</option>
+                    <option value="GA">Greater Accra</option>
+                    <option value="AR">Ashanti Region</option>
+                    <option value="EA">Eastern Region</option>
+                    <option value="NR">Northern Region</option>
+                  </select>
+            </div>
+
+            <div class="col-md-4">
+                <select id="car_registered" name="car_registered" class="custom-input-rect-form" required>
+                    <option value="">Is the car registered:</option>
+                    <option value="y">Yes</option>
+                    <option value="n">No</option>
+               
+                  </select>
+            </div>
+
+            <div class="col-md-4">
+                <select id="year_of_registration" name="year_of_registration" class="custom-input-rect-form" required>
+                    <option value="">Year of Registration:</option>
+                    <option value="2021">2021</option>
+                    <option value="2020">2020</option>
+                    <option value="2019">2019</option>
+                    <option value="2018">2018</option>
+                    <option value="2017">2017</option>
+                    <option value="2016">2016</option>
+                    <option value="2015">2015</option>
+                    <option value="2014">2014</option>
+                    <option value="2013">2013</option>
+                    <option value="2012">2012</option>
+                    <option value="2011">2011</option>
+                </select>
+            </div>
+
+            <div class="col-md-4">
+                <input type="number" id="selling_price" name="selling_price" class="custom-input-rect-form" placeholder="Input your selling price" required><br>
+
+            </div>
+
+            <div class="col-md-4">
+                <input type="textarea" id="description" name="description" class="custom-input-rect-form" placeholder="Input description of car" required><br>
+
+            </div>
+
+            <div class="col-md-4">
+                <label>Upload images</label><br>
+                <input required name="images" type="file" multiple class="form-control-file">
+
+            </div>
 
 
-    <select id="year_of_manufacture" name="year_of_manufacture" class="custom-input-rect" required>
-        <option value="">Year of Manufacture:</option>
-        <option value="2021">2021</option>
-        <option value="2020">2020</option>
-        <option value="2019">2019</option>
-        <option value="2018">2018</option>
-        <option value="2017">2017</option>
-        <option value="2016">2016</option>
-        <option value="2015">2015</option>
-        <option value="2014">2014</option>
-        <option value="2013">2013</option>
-        <option value="2012">2012</option>
-        <option value="2011">2011</option>
-    </select>
 
-    <select id="body_type" name="body_type" class="custom-input-rect" required>
-        <option value="">Body Type:</option>
-        <option value="sedan">Sedan</option>
-        <option value="suv">SUV</option>
-        <option value="hatchback">Hatchback</option>
-    </select>
-    
-    <input type="number" id="mileage" name="mileage" class="custom-input-rect" placeholder="Mileage of Vehicle " required><br>
+        </div>
+    </div>
 
-
-    <select id="fuel_type" name="fuel_type" class="custom-input-rect" required>
-        <option value="">Fuel Type:</option>
-        <option value="p">Petrol</option>
-        <option value="d">Diesel</option>
-    </select>
-
-    <select id="transmission" name="transmission" class="custom-input-rect" required>
-        <option value="">Transmission of Car:</option>
-        <option value="a">Automatic</option>
-        <option value="m">Manual</option>
-    </select>
-
-    <input type="number" step = "0.1" id="engine_capacity" name="engine_capacity" class="custom-input-rect" placeholder="Engine Capacity" required><br>
-
-    <select id="trim_edition" name="trim_edition" class="custom-input-rect" required>
-        <option value="">Trim/ Edition:</option>
-        <option value="standard">Standard</option>
-        <option value="full option">Full Option</option>
-        <option value="gt">GT</option>
-        <option value="sport">Sport</option>
-        <option value="touring">Touring</option>
-    </select>
-
-    <select id="location" name="location" class="custom-input-rect" required>
-        <option value="">Location:</option>
-        <option value="GA">Greater Accra</option>
-        <option value="AR">Ashanti Region</option>
-        <option value="EA">Eastern Region</option>
-        <option value="NR">Northern Region</option>
-      </select>
 {% comment %} add logic to hide other option if car not registered {% endcomment %}
-      <select id="car_registered" name="car_registered" class="custom-input-rect" required>
-        <option value="">Is the car registered:</option>
-        <option value="y">Yes</option>
-        <option value="n">No</option>
-   
-      </select>
-    
-    
-
-      <select id="year_of_registration" name="year_of_registration" class="custom-input-rect" required>
-        <option value="">Year of Registration:</option>
-        <option value="2021">2021</option>
-        <option value="2020">2020</option>
-        <option value="2019">2019</option>
-        <option value="2018">2018</option>
-        <option value="2017">2017</option>
-        <option value="2016">2016</option>
-        <option value="2015">2015</option>
-        <option value="2014">2014</option>
-        <option value="2013">2013</option>
-        <option value="2012">2012</option>
-        <option value="2011">2011</option>
-    </select><br>
-
-    <input type="number" id="selling_price" name="selling_price" class="custom-input-rect" placeholder="Input your selling price" required><br>
-
-    <input type="textarea" id="description" name="description" class="custom-input-rect" placeholder="Input description of car" required><br>
-
-    <label>Upload images</label><br>
-    <input required name="images" type="file" multiple class="form-control-file">
-
-<div><br>
-    <input type="submit" name="submit">
+<br>
+<input type="submit" name="submit" value="Post Advertisement" style="display: block; margin: 0 auto;" class = "submit-btn">
 </form>
+
+</div>
+</div>
 
 
 {% endblock %}

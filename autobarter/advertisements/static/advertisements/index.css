@@ -30,6 +30,7 @@ html, body {
 .index-h2{
     text-align: center;
     padding: 8% 0 4% 0;
+    font-weight: 600;
 
 }
 
@@ -57,8 +58,8 @@ div.card-text table tbody tr td {
     width: 50%;
     border-bottom: solid 1px  #f2f2f2;
     margin: 0 auto;
-    margin-bottom: 100px;
-    margin-top: 50px;
+    padding-bottom: 50px;
+    padding-top: 50px;
 
 }
 .vm-btn{
@@ -67,6 +68,21 @@ div.card-text table tbody tr td {
     color: black;
     padding: 20px;
     border-radius: 10px;
+    transition: transform .2s;
+}
+.vm-btn a{
+  transition: transform .2s;
+}
+
+.vm-btn a:hover{
+  transform: scale(1.1);
+}
+
+
+.vm-btn:hover{
+  color: black;
+  text-decoration: none;
+  transform: scale(1.1);
 }
 
 
@@ -142,3 +158,30 @@ div.card-text table tbody tr td {
   padding: 10px;
   border-radius: 14px;
  }
+
+ .custom-box-shadow{
+  box-shadow: -1px 0px 5px 0px rgba(0,0,0,0.12);
+-webkit-box-shadow: -1px 0px 5px 0px rgba(0,0,0,0.12);
+-moz-box-shadow: -1px 0px 5px 0px rgba(0,0,0,0.12);
+ }
+
+
+ .custom-input-rect-filter{
+  background: #E5ECF7;
+  width: 90%;
+  padding: 10px;
+  border: none;
+  color: #505780;
+  border-radius: 6px;
+  font-size: small;
+  font-weight: 800;
+  text-align: center;
+  
+
+
+}
+
+.custom-input-rect-filter::placeholder{
+  color: #505780;
+
+}

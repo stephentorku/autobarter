@@ -8,7 +8,7 @@ import os
 from django.urls import reverse
 
 from .models import Advertisement, AdvertisementImage, Comment
-from .decorators import unauthenticated_user, allowed_users
+from .decorators import authenticated_users_only, unauthenticated_user, allowed_users
 from django.contrib.auth.models import Group
 from .filters import AdvertisementFilter, AdvertisementHomeFilter
 from users.models import UserDetails
@@ -72,6 +72,7 @@ registration_year = model_data["registration_year"]
 year_of_manufacture = model_data["year_of_manufacture"]
 model_error = model_data["error"]
 
+@authenticated_users_only
 @allowed_users(allowed_roles=['vendor'])
 def new_ad(request):
     user = request.user

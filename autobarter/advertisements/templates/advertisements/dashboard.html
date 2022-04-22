@@ -8,34 +8,114 @@
 		margin: 0 auto;
 		border-radius: 50%;
 	}
+
+    .custom-input-rect-form{
+        background: #E5ECF7;
+        width: 100%;
+        padding: 12px;
+        border: none;
+        color: #505780;
+        border-radius: 6px;
+        font-size: 16px;
+        font-weight: 800;
+        text-align: center;
+        margin-bottom: 5%;
+        display: in-line;
+      }
+    
+      .custom-input-rect-form::placeholder{
+        color: #505780; 
+      }
+
+      .submit-btn{
+        border-radius: 18px;
+        background-color: #0D67B5;
+        color: #FFFFFF;
+        padding: 8px; 
+        border: none;
+        font-size: 90%;
+        margin: 0 auto;
+        display:block;
+     }
 </style>
 
 <br>
-<div class="row" style="padding-top: 10%">
-	<div class="col-md-3">
-		<div class="card card-body">
-			<a class="btn btn-warning" href=""> &#8592; Back to Profile</a>
-			<hr>
-			<h3 style="text-align: center">Account Details</h3>
-			<hr>
-			<img class="profile-pic" src="{{request.user.userdetails.profile_picture.url}}" ><br>
-			Number of ads: {{number_of_ads}}
+<div style="padding-top: 10%">
+	<h2 style="text-align: center">Edit Profile Details</h2><br>
+<div style="padding: 5%; width: 40%; border: solid 0px #96A1AA; margin: 0 auto; border-radius: 8px">
+
+	<div>
 		
-		</div>
 	</div>
-	<div class="col-md-9">
-		<div class="card card-body">
-			
-			<form method="POST" action="" enctype="multipart/form-data">
-				{% csrf_token %}
-				{{form.as_p}}
-		
-			<input class="btn btn-primary" type="submit" name="Update Information">
-			</form>
-		</div>
-	</div>
+
+		<div class="container">
+        <div class="row">
+            <div class="col-md-3">
+            {% load static %}
+            
+            <img class="card-img-top" style="border-radius: 50%; width: 90%" src="{{request.user.userdetails.profile_picture.url}} " alt="user"> 
+            
+            </div>
+
+            <div class="col-md-9">
+                <h3>{{request.user.first_name}} {{request.user.last_name}}</h3>            
+                {% comment %} &#128172; Chat with Seller {% endcomment %}
+                <div>Joined: {{request.user.date_joined}}</div>
+            </div>
+           
+
+        </div>
+    </div>
 </div>
 
+
+<div style="width: 50%; margin: 0 auto; padding-top: 5%; padding: 5%; border-radius: 10px; background-color: #f4f5f9">
+    
+
+            <div style="display: block; margin: auto 0">
+                <form method="POST" action="" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    
+                    <div>
+                    {{form.first_name.label}}<br>
+                    {{form.first_name}}
+                    </div>
+                    
+                    <div>
+                    {{form.last_name.label}}<br>
+                    {{form.last_name}}
+                    </div>
+    
+                    <div>
+                    {{form.email.label}}<br>
+                    {{form.email}}
+                    </div>
+                    
+                    <div>
+                    {{form.username.label}}<br>
+                    {{form.username}}
+                    </div>
+                    
+                    <div>
+                    {{form.phone_number.label}}<br>         
+                    {{form.phone_number}}
+                    </div>
+                    
+                    <div>
+                    {{form.profile_picture.label}}<br>      
+                    {{form.profile_picture}}
+                    </div><br><br>
+                    
+                
+            
+                    <input class="submit-btn" type="submit" value="Update Information">
+                </form>
+            </div>
+
+        
+</div>
+
+	
 
 
 <h2 class="index-h2">All ads by {{request.user.first_name}} {{request.user.last_name}}</h2>
@@ -71,5 +151,5 @@
         </div>
     </div>
 </div>
-
+</div>
 {% endblock %}

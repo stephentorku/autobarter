@@ -31,7 +31,6 @@ def send(request):
     text = request.POST['message']
     chat_id = request.POST['chat_id']
     chat = Chat.objects.get(id=chat_id)
-    print(chat)
     sender = request.user
     sender_name = request.user.first_name + " " + request.user.last_name
 
@@ -50,9 +49,11 @@ def getChats(request):
 
     if user.groups.filter(name="vendor"):
         chats = Chat.objects.filter(vendor=user)
-        context={'chats': chats}
+        last_message = Message.objects.filter(sender=user).last().text
+        context={'chats': chats, 'last_message': last_message}
         return render(request, 'chat/all_chats.html', context)
     else:
         chats = Chat.objects.filter(buyer=user)
-        context={'chats': chats}
+        last_message = Message.objects.filter(sender=user).last().text
+        context={'chats': chats, 'last_message': last_message}
         return render(request, 'chat/all_chats.html', context)
