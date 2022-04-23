@@ -15,6 +15,16 @@
         border-radius: 8px;
         padding: 2%;
       }
+
+      .submit-btn{
+        border-radius: 15px;
+        background-color: #0D67B5;
+        color: #FFFFFF;
+        padding: 4px; 
+        border: none;
+        font-size: 90%;
+        padding: 3px 20px 3px 20px
+     }
     </style>
   </head>
   <body>
@@ -32,23 +42,23 @@
         {% endif %}
 
 
-        <div style=" height: 500px; overflow: auto;" id="display">    
+        <div style="background-color: #eef0fa; height: 500px; overflow: auto;" id="display">    
         </div>
+        <br>
 
         <div style ="clear: both" class="container">
-          <div style="width: 50%; margin: 0 auto">
+          <div style="width: 80%; margin: 0 auto">
             <form id="post-form" method="POST">
                 {% csrf_token %}
                 <input type="hidden" name="chat_id" id="chat_id" value="{{chat_id}}"/>
-                <input type="text" name="message" id="message" width="100px" />
-                <input type="submit" value="Send">
+                <input type="text" name="message" id="message" placeholder="Send a message..." style="width: 80%; border: none; border-radius: 20px; padding: 5px" />
+                <input type="submit" value="&#10148;" class="submit-btn" >
             </form>
           </div>
         </div>
       </div>
     
     <script>
-      console.log("{{request.user.first_name}}");
     $(document).ready(function(){
     
     setInterval(function(){
@@ -59,14 +69,17 @@
                 $("#display").empty();
                 for (var key in response.messages)
                 {
+                    const date = new Date(Date.parse(response.messages[key].date));
+                    const formatted_date = date.toUTCString()
                     //var temp="<div class=''><b>"+response.messages[key].sender_name+"</b><p>"+response.messages[key].text+"</p><span class='time-left'>"+response.messages[key].date+"</span></div>";
                     if( response.messages[key].sender_name === "{{request.user.first_name}} {{request.user.last_name}}"){
-                      var temp="<div style='float: right;' class='message'><div style='color: white; background-color: #131417' class='message-bubble'>"+response.messages[key].text+"</div><span style='font-size: 10px'>"+response.messages[key].date+"</span></div>";
+                      var temp="<div style='float: right;' class='message'><div style='color: white; background-color: #131417' class='message-bubble'>"+response.messages[key].text+"</div><span style='font-size: 10px'>"+ formatted_date +"</span></div>";
                     }else{
-                      var temp="<div style='float: left;' class='message'><div  style='color: white; background-color: #000034' class='message-bubble'>"+response.messages[key].text+"</div><span style='font-size: 10px'>"+response.messages[key].date+"</span></div>";
+                      var temp="<div style='float: left;' class='message'><div  style='color: white; background-color: #000034' class='message-bubble'>"+response.messages[key].text+"</div><span style='font-size: 10px'>"+ formatted_date +"</span></div>";
                     }
                     $("#display").append(temp);
                 }
+
             },
             error: function(response){
                 //alert('An error occured')
