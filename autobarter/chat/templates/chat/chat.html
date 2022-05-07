@@ -51,7 +51,7 @@
             <form id="post-form" method="POST">
                 {% csrf_token %}
                 <input type="hidden" name="chat_id" id="chat_id" value="{{chat_id}}"/>
-                <input type="text" name="message" id="message" placeholder="Send a message..." style="width: 80%; border: none; border-radius: 20px; padding: 5px" />
+                <input type="text" name="message" id="message" placeholder="Send a message..." style="width: 80%; border: none; border-radius: 20px; padding: 5px" required/>
                 <input type="submit" value="&#10148;" class="submit-btn" >
             </form>
           </div>

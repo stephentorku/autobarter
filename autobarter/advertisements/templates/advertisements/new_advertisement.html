@@ -42,6 +42,12 @@
     
 </style>
 
+<script>
+    function confirmpost(){
+      return confirm("Are you sure you want to post this advertisement?")
+    }
+  </script>
+
 <div style="width: 70%; margin: 0 auto; padding-top: 12%">
 <h2 style = "text-align: left; padding-bottom: 20px">Provide Car Details</h2>
 
@@ -211,7 +217,7 @@
     
 
 <br>
-<input type="submit" name="submit" value="Post Advertisement" style="display: block; margin: 0 auto;" class = "submit-btn">
+<input onclick="return confirmpost()" type="submit" name="submit" value="Post Advertisement" style="display: block; margin: 0 auto;" class = "submit-btn">
 
 </form>
 </div>

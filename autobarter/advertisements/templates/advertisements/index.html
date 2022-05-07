@@ -22,6 +22,7 @@
     {% load static %}
     <link rel="stylesheet" href="{% static 'advertisements/css/owl.carousel.min.css' %}">
 
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -31,6 +32,11 @@
 
 
 <body>
+  <script>
+    function confirmlogout(){
+      return confirm("Are you sure you want to logout?")
+    }
+  </script>
 
     <div class="site-mobile-menu site-navbar-target">
         <div class="site-mobile-menu-header">
@@ -62,7 +68,7 @@
             
             {% if request.user.is_authenticated %}
             <li><a style ="font-family: Montserrat;  color: #ffffff" href="{% url 'all_chats' %}">Chats</a></li>
-            <li><a style ="font-family: Montserrat; color: #ffffff" href="{% url 'logout' %}">Log out</a></a></li>
+            <li><a onclick="return confirmlogout()" style ="font-family: Montserrat; color: #ffffff" href="{% url 'logout' %}">Log out</a></a></li>
               {% else %}
                 <li><a style ="font-family: Montserrat; color: #ffffff" href="{% url 'login' %}">Log In</a></li>
             {% endif %}
@@ -203,5 +209,5 @@
     </div>
     </div>
   </div>
-    
+
 {% endblock %}

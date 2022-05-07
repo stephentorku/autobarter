@@ -39,6 +39,12 @@
      }
 </style>
 
+<script>
+    function confirmupdate(){
+      return confirm("Are you sure you want to update your details?")
+    }
+  </script>
+
 <br>
 <div style="padding-top: 10%">
 	<h2 style="text-align: center">Edit Profile Details</h2><br>
@@ -108,7 +114,7 @@
                     
                 
             
-                    <input class="submit-btn" type="submit" value="Update Information">
+                    <input onclick="return confirmupdate()" class="submit-btn" type="submit" value="Update Information">
                 </form>
             </div>
 

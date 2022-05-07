@@ -43,13 +43,13 @@
         {% if request.user.is_authenticated and request.user|has_group:"vendor" %}
                 <img class="profile-pic" src="{{chat.buyer.userdetails.profile_picture.url}}" >  
             <a class="a-text" href="{% url 'chat' chat.id %}"> {{chat.buyer.first_name|title}} {{chat.buyer.last_name|title}}</a><br>
-            <div style="color: grey; padding-left: 35px; font-weight: 200">{{last_message}}</div>
+            {% comment %} <div style="color: grey; padding-left: 35px; font-weight: 200">{{last_message}}</div> {% endcomment %}
         {% endif %} 
 
         {% if request.user.is_authenticated and request.user|has_group:"buyer" %}
              <img class="profile-pic" src="{{chat.vendor.userdetails.profile_picture.url}}" >
             <a class="a-text"  href="{% url 'chat' chat.id %}"> {{chat.vendor.first_name|title}} {{chat.vendor.last_name|title}}</a><br>
-            <div style="color: grey; padding-left: 35px; font-weight: 200">{{last_message}}</div>
+            {% comment %} <div style="color: grey; padding-left: 35px; font-weight: 200">{{last_message}}</div> {% endcomment %}
         {% endif %} 
 
         </div>

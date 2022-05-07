@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from .models import Chat, Message
 from django.http import HttpResponse, JsonResponse
+import sweetify
 # Create your views here.
 
 
@@ -19,10 +20,12 @@ def checkChat(request):
 
     if Chat.objects.filter(vendor=vendor, buyer=buyer ).exists():
         chat = Chat.objects.get(vendor=vendor, buyer=buyer)
-        return redirect('chat/?chat_id='+str(chat.id))
+        sweetify.success(request, 'Redirecting to chat')
+        return redirect('chat/'+str(chat.id))
     else:
         new_chat = Chat.objects.create(vendor=vendor, buyer=buyer)
         new_chat.save()
+        sweetify.success(request, 'Redirecting to chat')
         return redirect('chat/'+ str(new_chat.id))
 
 

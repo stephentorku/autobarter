@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-sh9*%f9*@^de(*ed2e$0(ul6rocbd22@_u&jp4u#$3h59+p4p3
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['34.70.249.117']
 
 
 # Application definition
@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django_filters',
     'chat',
     'django_extensions',
+    'sweetify',
 ]
 
 MIDDLEWARE = [
@@ -82,10 +83,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'autobarter',
-        'USER': 'postgres',
-        'PASSWORD':'EtornaM18',
+        'USER': 'stephen',
+        'PASSWORD':'130601',
         'HOST': 'localhost',
-        'PORT': '5432',
+        'PORT': '',
     }
 }
 
@@ -132,3 +133,5 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+SWEETIFY_SWEETALERT_LIBRARY = 'sweetalert2'

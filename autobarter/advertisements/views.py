@@ -197,7 +197,6 @@ def new_ad_na(request):
             advertisement=advertisement,
             image=image
         )
-
         return redirect(reverse('details', kwargs={"id": advertisement.id}))
     return render(request, 'advertisements/new_advertisement_na.html')
 
