@@ -144,11 +144,9 @@ def new_ad(request):
             car_registered = data['car_registered'],
             registration_year = data['year_of_registration'],
             selling_price = data['selling_price'],
-             post_image = images[0],
+            post_image = images[0],
             description = data['description'],
             vendor = user,
-            #calculate market value from model
-            #market_value = str(y_pred[0])
             market_value = price_range
             )
 

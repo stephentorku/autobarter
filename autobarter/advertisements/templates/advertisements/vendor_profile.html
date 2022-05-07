@@ -11,7 +11,7 @@
 
 
 
-<div style="padding: 5%; width: 70%; border: solid 1px #96A1AA; margin: 0 auto; border-radius: 8px">
+<div style="padding: 5%; width: 70%; margin: 0 auto; border-radius: 8px; background: #ffffff" class="custom-box-shadow">
     <div class="container">
         <div class="row">
             <div class="col-md-3">
@@ -48,7 +48,7 @@
 
         {% for advertisement in advertisements %}
             <div class="col-md-3" style="margin-right: 20px; margin-bottom: 20px">
-                <div class="card" style="width: 18rem; padding: 2%; border-radius: 4%;">
+                <div class="card custom-box-shadow" style="width: 18rem; padding: 2%; border-radius: 4%; border: none">
                     {% load static %}
                     <img class="card-img-top" style="border-radius: 4%;" src="{{advertisement.post_image.url}}" alt="Logo">
                     

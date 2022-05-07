@@ -6,7 +6,7 @@
 		max-width: 200px;
 		max-height:200px;
 		margin: 0 auto;
-		border-radius: 50%;
+		border-radius: 10%;
 	}
 
     .custom-input-rect-form{
@@ -48,12 +48,12 @@
 		
 	</div>
 
-		<div class="container">
+	<div class="container">
         <div class="row">
             <div class="col-md-3">
             {% load static %}
             
-            <img class="card-img-top" style="border-radius: 50%; width: 90%" src="{{request.user.userdetails.profile_picture.url}} " alt="user"> 
+            <img class="card-img-top" style="border-radius: 10%; width: 90%" src="{{request.user.userdetails.profile_picture.url}} " alt="user"> 
             
             </div>
 
@@ -69,7 +69,7 @@
 </div>
 
 
-<div style="width: 50%; margin: 0 auto; padding-top: 5%; padding: 5%; border-radius: 10px; background-color: #f4f5f9">
+<div class="custom-box-shadow" style="width: 50%; margin: 0 auto; padding-top: 5%; padding: 5%; border-radius: 10px; background-color: #f4f5f9">
     
 
             <div style="display: block; margin: auto 0">
@@ -127,7 +127,7 @@
 
         {% for advertisement in advertisements %}
             <div class="col-md-3" style="margin-right: 20px; margin-bottom: 20px">
-                <div class="card" style="width: 18rem; padding: 2%; border-radius: 4%;">
+                <div class="card custom-box-shadow" style="width: 18rem; padding: 2%; border-radius: 4%; border: none">
                     {% load static %}
                     <img class="card-img-top" style="border-radius: 4%;" src="{{advertisement.post_image.url}}" alt="Logo">
                     

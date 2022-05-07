@@ -14,7 +14,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-3" style="padding: 0px">
-                    <div class="card" style="width: 18rem; padding: 15%; border-radius: 8px;"><br>
+                    <div class="card custom-box-shadow" style="width: 18rem; padding: 15%; border-radius: 8px; border: none"><br>
                         <h5>Filter Results</h5><br>
 
                           <br>
@@ -80,7 +80,7 @@
                 {% for advertisement in advertisements %}
                   <div class="col-md-3" style="margin-right: 20px; margin-bottom: 20px">
                       <div class="col-md-3">
-                          <div class="card" style="width: 18rem; padding: 2%; border-radius: 4%;">
+                          <div class="card custom-box-shadow" style="width: 18rem; padding: 2%; border-radius: 4%; border: none">
                               <img class="card-img-top" style="border-radius: 4%;" src="{{advertisement.post_image.url}}" alt="Logo">
                               <div class="card-body">
                                 <h5 class="card-title">{{advertisement.title}}</h5>

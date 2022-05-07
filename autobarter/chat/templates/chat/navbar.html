@@ -48,25 +48,25 @@
             {% load static %}
             <a href="{% url 'home' %}"><div class="site-logo col-md-6 "><img style="width:10%; height: 10%; border-radius: 0 20% 0 20%;" src="{% static 'advertisements/AutoBarterGh-logo.jpeg' %}" alt="Logo"></div></a>
             <div class="col-md-6">
-            <nav class="mx-auto site-navigation"  style="width:900px; margin:0 auto; color: #ffffff">
+            <nav class="mx-auto site-navigation"  style="width:900px; margin:0 auto; color: #ffffff; background: #e5ecf7; border-radius: 10px">
               <ul class="site-menu js-clone-nav d-none d-xl-block ml-0 pl-0">
     
 
-                <li><a style ="font-family: Montserrat;" href="{% url 'advertisements' %}">Latest Ads</a></li>
-                <li><a style ="font-family: Montserrat;" href="{% url 'value_car' %}">Value Your Car</a></li>
-                <li><a style ="font-family: Montserrat;" href="{% url 'new_ad' %}"><span class="mr-2">+</span> Post an Ad</a></li>
+                <li><a style ="font-family: Montserrat;" href="{% url 'advertisements' %}"><strong>Latest Ads</strong></a></li>
+                <li><a style ="font-family: Montserrat;" href="{% url 'value_car' %}"><strong>Value Your Car</strong></a></li>
+                <li><a style ="font-family: Montserrat;" href="{% url 'new_ad' %}"><strong>Post an Ad</strong></a></li>
                 {% load auth_extras %}
                 {% if request.user.is_authenticated and request.user|has_group:"vendor" %}
-                  <li><a style ="font-family: Montserrat;" href="{% url 'dashboard' %}"><span class="mr-2">+</span> Dashboard</a></li>
+                  <li><a style ="font-family: Montserrat;" href="{% url 'dashboard' %}"><strong> Dashboard</strong></a></li>
                 {% endif %}
                 
                 
 
                 {% if request.user.is_authenticated %}
-                    <li><a style ="font-family: Montserrat;" href="{% url 'all_chats' %}">Chats</a></li>
-                    <li><a style ="font-family: Montserrat;" href="{% url 'logout' %}">Log out</a></a></li>
+                    <li><a style ="font-family: Montserrat;" href="{% url 'all_chats' %}"><strong>Chats</strong></a></li>
+                    <li><a style ="font-family: Montserrat;" href="{% url 'logout' %}"><strong>Log out</strong></a></a></li>
                   {% else %}
-                    <li><a style ="font-family: Montserrat;" href="{% url 'login' %}">Log In</a></li>
+                    <li><a style ="font-family: Montserrat;" href="{% url 'login' %}"><strong>Log In</strong></a></li>
                 {% endif %}
                 
               </ul>
@@ -81,10 +81,11 @@
 
 {% endblock %}
 </body>
-{% comment %} <style>
-  body{
-    background-image: linear-gradient( 111.5deg,  rgba(228,247,255,1) 21.9%, rgba(255,216,194,1) 92.2% );
+<style>
+  html, body{
+    {% comment %} background-image: linear-gradient( 111.5deg,  rgba(228,247,255,1) 21.9%, rgba(255,216,194,1) 92.2% ); {% endcomment %}
+    background: #f4f5f6;
     
   }
-</style> {% endcomment %}
+</style>
 </html>

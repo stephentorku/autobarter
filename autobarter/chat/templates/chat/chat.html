@@ -8,7 +8,7 @@
     <style>
       .message{
         border-radius: 8px;
-        padding: 10px;
+        padding: 20px;
         width: 55%;
       }
       .message-bubble{
@@ -30,15 +30,15 @@
   <body>
     
     <div style="padding-top:12%">
-      <div style="width: 60%; margin: 0 auto; background-color: #f4f5f9; padding: 5%; border-radius: 8px;">
+      <div style="width: 60%; margin: 0 auto; background-color: #f4f5f9; padding: 5%; border-radius: 8px;" class="custom-box-shadow">
         {% load auth_extras %}
 
         {% if request.user.is_authenticated and request.user|has_group:"vendor" %}
-        <h2 style="text-align: center">Chat with {{chat.buyer.first_name|title}} {{chat.buyer.last_name|title}}</h2>
+        <h2 style="text-align: left">Chat with {{chat.buyer.first_name|title}} {{chat.buyer.last_name|title}}</h2><br>
         {% endif %}
 
         {% if request.user.is_authenticated and request.user|has_group:"buyer" %}
-        <h2 style="text-align: center">Chat with {{chat.vendor.first_name|title}} {{chat.vendor.last_name|title}}</h2>
+        <h2 style="text-align: left">Chat with {{chat.vendor.first_name|title}} {{chat.vendor.last_name|title}}</h2><br>
         {% endif %}
 
 
