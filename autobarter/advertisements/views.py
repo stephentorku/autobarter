@@ -114,7 +114,6 @@ def new_ad(request):
 
         
         y_pred = regressor.predict(X)
-        print(model_error)
 
 
         rounded_error = int(round(model_error, -3))
@@ -249,7 +248,7 @@ def value_car(request):
 
         
         y_pred = regressor.predict(X)
-        print(model_error)
+
 
 
         rounded_error = int(round(model_error, -3))
