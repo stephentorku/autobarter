@@ -53,10 +53,10 @@ def getChats(request):
     if user.groups.filter(name="vendor"):
         chats = Chat.objects.filter(vendor=user)
         #last_message = Message.objects.filter(sender=user).last().text
-        context={'chats': chats, 'last_message': last_message}
+        context={'chats': chats}
         return render(request, 'chat/all_chats.html', context)
     else:
         chats = Chat.objects.filter(buyer=user)
         #last_message = Message.objects.filter(sender=user).last().text
-        context={'chats': chats, 'last_message': last_message}
+        context={'chats': chats}
         return render(request, 'chat/all_chats.html', context)
