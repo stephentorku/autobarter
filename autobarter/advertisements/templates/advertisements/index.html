@@ -142,14 +142,16 @@
     </div>
 
     <div style="padding: 2%; width: 100%; margin: 0 auto; padding-left: 8%">
-        <div class="container">
+    
+
+      <div class="container">
           <div class="row">
-            
-            {% for advertisement in advertisements|slice:"3" %}
-            <div class="col-md-3">
-                  <div class="card custom-box-shadow" style="width: 18rem; padding: 2%; border-radius: 4%; border: none;">
+  
+          {% for advertisement in advertisements|slice:"3" %}
+              <div class="col-md-3" style="margin-right: 20px; margin-bottom: 20px">
+                  <div class="card custom-box-shadow" style="width: 18rem; padding: 2%; border-radius: 4%; border: none">
                       {% load static %}
-                      <img class="card-img-top" style="border-radius: 4%;" src='{{advertisement.post_image.url}}' alt="Logo">
+                      <img class="card-img-top" style="border-radius: 4%;" src="{{advertisement.post_image.url}}" alt="Logo">
                       
                       <div class="card-body">
                         <h5 class="card-title">{{advertisement.title}}</h5>
@@ -164,10 +166,15 @@
                         <a href="{% url 'details' advertisement.id %}" class="card-btn">More Details →</a>
                       </div>
                     </div>
-            </div>
-            {% endfor %}           
+              </div>
+          {% endfor %}
+  
+             
+          </div>
       </div>
-    </div>
+  </div>
+
+  
   </div>
 
  <div style="margin: 0 auto; margin-top: 5%; width: 170px;">   <a style="color: black" href="{% url 'advertisements' %}" class="vm-btn">View More →</a></div>
