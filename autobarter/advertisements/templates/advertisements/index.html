@@ -44,8 +44,8 @@
             <span class="icon-close2 js-menu-toggle"></span>
           </div>
         </div>
-        <div class="site-mobile-menu-body"></div>
-      </div> <!-- .site-mobile-menu -->
+      <div class="site-mobile-menu-body"></div>
+    </div> <!-- .site-mobile-menu -->
       
     
       <!-- NAVBAR -->
@@ -53,27 +53,27 @@
         {% load static %}
         <a href="{% url 'home' %}"><div class="site-logo col-md-4" style="padding: 0px"><img style="width:10%; height: 10%; border-radius: 0 20% 0 20%;" src="{% static 'advertisements/AutoBarterGh-logo.jpeg' %}" alt="Logo"></div></a>
         <div class="col-md-8">
-        <nav class="mx-auto site-navigation" style="width:900px; margin:0 auto; color: #ffffff">
-          <ul class="site-menu js-clone-nav d-none d-xl-block ml-0 pl-0">
+          <nav class="mx-auto site-navigation" style="width:900px; margin:0 auto; color: #ffffff">
+            <ul class="site-menu js-clone-nav d-none d-xl-block ml-0 pl-0">
 
-            <li><a style ="font-family: Montserrat; color: #ffffff" href="{% url 'advertisements' %}">Latest Ads</a></li>
-            <li><a style ="font-family: Montserrat; color: #ffffff" href="{% url 'value_car' %}">Value Your Car</a></li>
-            <li><a style ="font-family: Montserrat; color: #ffffff" href="{% url 'new_ad' %}"> Post an Ad</a></li>
+              <li><a style ="font-family: Montserrat; color: #ffffff" href="{% url 'advertisements' %}">Latest Ads</a></li>
+              <li><a style ="font-family: Montserrat; color: #ffffff" href="{% url 'value_car' %}">Value Your Car</a></li>
+              <li><a style ="font-family: Montserrat; color: #ffffff" href="{% url 'new_ad' %}"> Post an Ad</a></li>
 
-            {% load auth_extras %}
-            {% if request.user.is_authenticated and request.user|has_group:"vendor" %}
-              <li><a style ="font-family: Montserrat; color: #ffffff" href="{% url 'dashboard' %}">Dashboard</a></li>
-            {% endif %}
+              {% load auth_extras %}
+              {% if request.user.is_authenticated and request.user|has_group:"vendor" %}
+                <li><a style ="font-family: Montserrat; color: #ffffff" href="{% url 'dashboard' %}">Dashboard</a></li>
+              {% endif %}
 
-            
-            {% if request.user.is_authenticated %}
-            <li><a style ="font-family: Montserrat;  color: #ffffff" href="{% url 'all_chats' %}">Chats</a></li>
-            <li><a onclick="return confirmlogout()" style ="font-family: Montserrat; color: #ffffff" href="{% url 'logout' %}">Log out</a></a></li>
-              {% else %}
-                <li><a style ="font-family: Montserrat; color: #ffffff" href="{% url 'login' %}">Log In</a></li>
-            {% endif %}
-          </ul>
-        </nav>
+              
+                {% if request.user.is_authenticated %}
+                <li><a style ="font-family: Montserrat;  color: #ffffff" href="{% url 'all_chats' %}">Chats</a></li>
+                <li><a onclick="return confirmlogout()" style ="font-family: Montserrat; color: #ffffff" href="{% url 'logout' %}">Log out</a></a></li>
+                {% else %}
+                  <li><a style ="font-family: Montserrat; color: #ffffff" href="{% url 'login' %}">Log In</a></li>
+              {% endif %}
+            </ul>
+          </nav>
     </div>
       </header>
 <style>
@@ -136,17 +136,18 @@
     </div>
 
   <div style="background-color: #F4F5F6">
+    
     <div>
     <h1 class="index-h2">Browse New Car Deals</h1>
     </div>
 
-  <div style="padding: 2%; width: 100%; margin: 0 auto; padding-left: 8%">
-    <div class="container">
-        <div class="row">
+    <div style="padding: 2%; width: 100%; margin: 0 auto; padding-left: 8%">
+      <div class="container">
+          <div class="row">
             
           {% for advertisement in advertisements|slice:"3" %}
             <div class="col-md-3">
-                <div class="card custom-box-shadow" style="width: 18rem; padding: 2%; border-radius: 4%; border: none; margin-right:5000px;">
+                <div class="card custom-box-shadow" style="width: 18rem; padding: 2%; border-radius: 4%; border: none;">
                     {% load static %}
                     <img class="card-img-top" style="border-radius: 4%;" src='{{advertisement.post_image.url}}' alt="Logo">
                     
