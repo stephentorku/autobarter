@@ -81,7 +81,7 @@ WSGI_APPLICATION = 'autobarter.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'autobarter',
         'USER': 'stephen',
         'PASSWORD':'130601',
