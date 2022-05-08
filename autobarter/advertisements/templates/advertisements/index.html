@@ -136,38 +136,37 @@
     </div>
 
   <div style="background-color: #F4F5F6">
-    
+
     <div>
     <h1 class="index-h2">Browse New Car Deals</h1>
     </div>
 
     <div style="padding: 2%; width: 100%; margin: 0 auto; padding-left: 8%">
-      <div class="container">
+        <div class="container">
           <div class="row">
             
-          {% for advertisement in advertisements|slice:"3" %}
+            {% for advertisement in advertisements|slice:"3" %}
             <div class="col-md-3">
-                <div class="card custom-box-shadow" style="width: 18rem; padding: 2%; border-radius: 4%; border: none;">
-                    {% load static %}
-                    <img class="card-img-top" style="border-radius: 4%;" src='{{advertisement.post_image.url}}' alt="Logo">
-                    
-                    <div class="card-body">
-                      <h5 class="card-title">{{advertisement.title}}</h5>
-                      <div class="card-text" style="margin-bottom: 15%;">
-                          <table style="width: 100%;">
-                              <tbody>
-                                  <tr > <td style="height: 50px;">Market Value</td> <td style="text-align: right; font-weight: 900;"> <a style="background-color: #E4ECF7; color: #505780; padding: 0 7% 0 7%; border-radius: 10px;">GH¢ {{advertisement.market_value}}</a></td></tr>
-                                  <tr> <td>Selling Price</td> <td style="text-align: right; font-weight: 900;"> <a style="background-color: #E4ECF7; color: #505780; padding: 0 7% 0 7%; border-radius: 10px;">GH¢ {{advertisement.selling_price}}</a></td></tr>
-                              </tbody>
-                          </table>
-                        </div>
-                      <a href="{% url 'details' advertisement.id %}" class="card-btn">More Details →</a>
+                  <div class="card custom-box-shadow" style="width: 18rem; padding: 2%; border-radius: 4%; border: none;">
+                      {% load static %}
+                      <img class="card-img-top" style="border-radius: 4%;" src='{{advertisement.post_image.url}}' alt="Logo">
+                      
+                      <div class="card-body">
+                        <h5 class="card-title">{{advertisement.title}}</h5>
+                        <div class="card-text" style="margin-bottom: 15%;">
+                            <table style="width: 100%;">
+                                <tbody>
+                                    <tr > <td style="height: 50px;">Market Value</td> <td style="text-align: right; font-weight: 900;"> <a style="background-color: #E4ECF7; color: #505780; padding: 0 7% 0 7%; border-radius: 10px;">GH¢ {{advertisement.market_value}}</a></td></tr>
+                                    <tr> <td>Selling Price</td> <td style="text-align: right; font-weight: 900;"> <a style="background-color: #E4ECF7; color: #505780; padding: 0 7% 0 7%; border-radius: 10px;">GH¢ {{advertisement.selling_price}}</a></td></tr>
+                                </tbody>
+                            </table>
+                          </div>
+                        <a href="{% url 'details' advertisement.id %}" class="card-btn">More Details →</a>
+                      </div>
                     </div>
-                  </div>
             </div>
-          {% endfor %}        
-        </div>
-
+            {% endfor %}           
+      </div>
     </div>
   </div>
 
